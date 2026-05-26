@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chiến Dịch Marketing Volta Belting - Vietfish 2026</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Mermaid.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+  <style>
+    /* CSS Variables for Premium Styling */
+    :root {
+      --bg-dark: #0B0F19;
+      --bg-card: rgba(15, 23, 42, 0.65);
+      --bg-card-hover: rgba(30, 41, 59, 0.8);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-color-hover: rgba(6, 182, 212, 0.4);
+      --text-main: #F1F5F9;
+      --text-muted: #94A3B8;
+      
+      /* Vibrant Accents */
+      --accent-cyan: #06B6D4;
+      --accent-cyan-glow: rgba(6, 182, 212, 0.15);
+      --accent-emerald: #10B981;
+      --accent-emerald-glow: rgba(16, 185, 129, 0.15);
+      --accent-amber: #F59E0B;
+      --accent-amber-glow: rgba(245, 158, 11, 0.15);
+      --accent-rose: #F43F5E;
+      --accent-rose-glow: rgba(244, 63, 94, 0.15);
+      --accent-indigo: #6366F1;
+      --accent-indigo-glow: rgba(99, 102, 241, 0.15);
+      
+      --font-main: 'Plus Jakarta Sans', sans-serif;
+      --font-heading: 'Space Grotesk', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+        radial-gradient(at 50% 0%, rgba(6, 182, 212, 0.06) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    /* Premium Navigation/Header */
+    header {
+      max-width: 1400px;
+      margin: 0 auto 2.5rem auto;
+      padding: 2rem;
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-glow {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+    }
+
+    .logo-glow i {
+      font-size: 1.5rem;
+      color: #fff;
+      animation: pulse 2s infinite;
+    }
+
+    .brand-title h1 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, #94A3B8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-title p {
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .meta-pills {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 1rem;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pill.cyan {
+      color: var(--accent-cyan);
+      border-color: rgba(6, 182, 212, 0.2);
+      background: var(--accent-cyan-glow);
+    }
+
+    .pill.emerald {
+      color: var(--accent-emerald);
+      border-color: rgba(16, 185, 129, 0.2);
+      background: var(--accent-emerald-glow);
+    }
+
+    /* Layout Setup */
+    .dashboard-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 2rem;
+    }
+
+    /* Left Column: Visual Flow Viewer */
+    .flow-viewer-section {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+    }
+
+    .title-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .title-left i {
+      color: var(--accent-cyan);
+    }
+
+    /* Interactive Zoom Diagram Area (Miro Style) */
+    .diagram-outer-container {
+      background: rgba(5, 8, 16, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 1rem;
+      min-height: 650px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .diagram-scroll-area {
+      width: 100%;
+      height: 600px;
+      overflow: auto;
+      cursor: grab;
+      position: relative;
+      background: #050810;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .diagram-scroll-area.grabbing {
+      cursor: grabbing;
+      user-select: none;
+    }
+
+    .diagram-wrapper {
+      padding: 3rem;
+      width: fit-content;
+      height: fit-content;
+      min-width: 100%;
+      min-height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-origin: 50% 50%;
+      transition: transform 0.15s cubic-bezier(0.1, 0.8, 0.25, 1);
+    }
+
+    /* Override Mermaid SVG scaling behavior */
+    .diagram-wrapper svg {
+      max-width: none !important;
+      width: auto !important;
+      height: auto !important;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Control Bar for Zoom/Full */
+    .diagram-controls {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-color);
+      padding: 0.4rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+
+    .btn-control {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .btn-control:hover {
+      background: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+      color: #000;
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+    }
+
+    .zoom-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      width: 50px;
+      color: var(--accent-cyan);
+    }
+
+    /* Right Column: Interactive Sidebar */
+    .sidebar-section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Interactive Team & Assignees Card */
+    .team-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .team-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .member-row {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .member-row:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--border-color-hover);
+      transform: translateX(4px);
+    }
+
+    .member-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .member-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent-indigo);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    .member-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .member-role {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .task-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .task-badge.pm { background: var(--accent-cyan-glow); color: var(--accent-cyan); }
+    .task-badge.founder { background: var(--accent-amber-glow); color: var(--accent-amber); }
+    .task-badge.ceo { background: var(--accent-indigo-glow); color: var(--accent-indigo); }
+    .task-badge.seo { background: var(--accent-emerald-glow); color: var(--accent-emerald); }
+    .task-badge.ae { background: var(--accent-rose-glow); color: var(--accent-rose); }
+
+    /* Interactive Phase Details Card */
+    .phase-details-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phase-selector {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.25rem;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0.25rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-phase {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.5rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+
+    .btn-phase.active {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--accent-cyan);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .phase-content {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .phase-content.active {
+      display: block;
+    }
+
+    .phase-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .phase-icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .phase-content.p1 .phase-icon-box { background: var(--accent-amber-glow); color: var(--accent-amber); }
+    .phase-content.p2 .phase-icon-box { background: var(--accent-indigo-glow); color: var(--accent-indigo); }
+    .phase-content.p3 .phase-icon-box { background: var(--accent-cyan-glow); color: var(--accent-cyan); }
+    .phase-content.p4 .phase-icon-box { background: var(--accent-emerald-glow); color: var(--accent-emerald); }
+    .phase-content.p5 .phase-icon-box { background: var(--accent-rose-glow); color: var(--accent-rose); }
+
+    .phase-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .phase-description {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .checklist-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .checklist-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .checklist-item i {
+      margin-top: 0.2rem;
+    }
+
+    .checklist-item.check i { color: var(--accent-emerald); }
+    .checklist-item.process i { color: var(--accent-cyan); }
+    .checklist-item.pending i { color: var(--text-muted); }
+
+    /* Interactive Bottom Area: Scripts Center */
+    .scripts-section {
+      max-width: 1400px;
+      margin: 2rem auto 0 auto;
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .scripts-tabs {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0.4rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+
+    .btn-tab {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-tab.active {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--accent-cyan);
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .script-box {
+      background: rgba(10, 15, 30, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .btn-copy {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+    }
+
+    .btn-copy:hover {
+      background: var(--accent-cyan-glow);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .script-text {
+      font-family: var(--font-main);
+      font-size: 0.9rem;
+      white-space: pre-line;
+      color: var(--text-main);
+      padding-right: 6rem;
+    }
+
+    .script-text strong {
+      color: #fff;
+    }
+
+    /* Info Alerts */
+    .alert-info {
+      background: var(--accent-cyan-glow);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Key Metrics Panel */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto 2rem auto;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .metric-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .metric-card.cyan .metric-icon-box { background: var(--accent-cyan-glow); color: var(--accent-cyan); }
+    .metric-card.emerald .metric-icon-box { background: var(--accent-emerald-glow); color: var(--accent-emerald); }
+    .metric-card.amber .metric-icon-box { background: var(--accent-amber-glow); color: var(--accent-amber); }
+    .metric-card.indigo .metric-icon-box { background: var(--accent-indigo-glow); color: var(--accent-indigo); }
+
+    .metric-data h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .metric-data p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Drag hint overlay styling */
+    .drag-hint {
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(6, 182, 212, 0.08);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      padding: 0.3rem 0.6rem;
+      border-radius: 8px;
+    }
+
+    /* Animations */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Toast Notification for copying */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--accent-emerald);
+      color: #000;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transform: translateY(150%);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 1000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+    }
+
+    /* Responsiveness */
+    @media (max-width: 1200px) {
+      .dashboard-container {
+        grid-template-columns: 1fr;
+      }
+      .metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="brand-section">
+      <div class="logo-glow">
+        <i class="fa-solid fa-arrows-split-up-and-left"></i>
+      </div>
+      <div class="brand-title">
+        <h1>Volta Belting Vietfish 2026</h1>
+        <p>Quy trình Phễu B2B Marketing & Outreach</p>
+      </div>
+    </div>
+    
+    <div class="meta-pills">
+      <div class="pill cyan">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>19 - 21/08/2026</span>
+      </div>
+      <div class="pill emerald">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Stand 609 & 709, HALL A (SECC)</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Key Metrics / Goals Bar -->
+  <div class="metrics-bar">
+    <div class="metric-card emerald">
+      <div class="metric-icon-box">
+        <i class="fa-solid fa-bullseye"></i>
+      </div>
+      <div class="metric-data">
+        <h3>20 Cuộc Hẹn</h3>
+        <p>Mục tiêu tối thiểu tại Booth</p>
+      </div>
+    </div>
+    <div class="metric-card cyan">
+      <div class="metric-icon-box">
+        <i class="fa-solid fa-users"></i>
+      </div>
+      <div class="metric-data">
+        <h3>120 Hội Viên</h3>
+        <p>Danh sách VASEP cào sẵn</p>
+      </div>
+    </div>
+    <div class="metric-card amber">
+      <div class="metric-icon-box">
+        <i class="fa-solid fa-envelope"></i>
+      </div>
+      <div class="metric-data">
+        <h3>3 Emails</h3>
+        <p>Chuỗi phễu Outbound Mailchimp</p>
+      </div>
+    </div>
+    <div class="metric-card indigo">
+      <div class="metric-icon-box">
+        <i class="fa-solid fa-book-open"></i>
+      </div>
+      <div class="metric-data">
+        <h3>1 Ebook</h3>
+        <p>Cẩm nang & Đạo cụ Kỹ thuật</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Dashboard Container -->
+  <div class="dashboard-container">
+    
+    <!-- Left Column: Flowchart Viewer -->
+    <div class="flow-viewer-section">
+      <div class="section-title">
+        <div class="title-left">
+          <i class="fa-solid fa-network-wired"></i>
+          <span>Sơ Đồ Phễu B2B Campaign (Tải & Tương Tác Phóng To)</span>
+        </div>
+        <div class="drag-hint">
+          <i class="fa-solid fa-hand-pointer"></i>
+          <span>Giữ và Kéo để di chuyển sơ đồ</span>
+        </div>
+      </div>
+      
+      <div class="diagram-outer-container">
+        <!-- Scrollable Miro Area -->
+        <div class="diagram-scroll-area" id="scroll-area">
+          <div class="diagram-wrapper" id="diagram-wrapper">
+            <pre class="mermaid" id="flowchart">
+graph TD
+    %% 1. Nguồn dữ liệu & Tiếp cận
+    subgraph DATA_SOURCES["1. NGUỒN DỮ LIỆU & TIẾP CẬN"]
+        VasepList["Danh sách 120 Hội viên VASEP<br/>(Email, SĐT, địa chỉ)"]
+        PersonaAds["Tệp Persona QA/QC, COO, Kỹ thuật<br/>(Nhắm quảng cáo số trên LinkedIn, Facebook, Google GDN)"]
+    end
+
+    %% 2. Kênh Outbound & PR
+    subgraph OUTBOUND_FUNNEL["2. KÊNH OUTBOUND & PR"]
+        PR["Kênh PR Báo chí B2B<br/>(1 Báo lớn traffic + 1 Báo chuyên ngành)"]
+        Email1["Gửi Email 1 (Mailchimp):<br/>Thư mời Vietfish Stand 609 & 709"]
+        Email2["Gửi Email 2 (Mailchimp):<br/>Tặng Ebook Giải pháp Thủy sản"]
+        Email3["Gửi Email 3 (Mailchimp):<br/>Nhắc lịch & Đặt hẹn gặp tại Booth"]
+        Call1["Telesales Gọi Điện Trực Tiếp<br/>(Dùng danh bạ SĐT VASEP)"]
+    end
+
+    %% 3. Kênh Inbound
+    subgraph INBOUND_FUNNEL["3. KÊNH INBOUND"]
+        Ads["LinkedIn & Facebook Ads / Google GDN<br/>(Quảng cáo nhắm chọn chức danh B2B)"]
+        LandingPage["Landing Page Vietfish<br/>(Form tải Ebook Thủy sản / Hẹn gặp)"]
+        Mailchimp["Email Automation (Mailchimp)<br/>(Gửi Ebook & Email nhắc lịch hẹn gặp)"]
+    end
+
+    %% 4. Điểm chuyển đổi đặt lịch
+    subgraph BOOKING_CONVERSION["4. ĐIỂM CHUYỂN ĐỔI (ĐẶT LỊCH)"]
+        OfferKit["QUÀ TẶNG ĐỘC QUYỀN<br/>Bản in cứng Cẩm nang Giải pháp Thủy hải sản<br/>(Volta Seafood Solutions Guide)"]
+        Calendly["Trang Đăng Ký Lịch Hẹn Online<br/>(Khóa khung giờ 15 phút tại Booth)"]
+    end
+
+    %% 5. Triển lãm Vietfish (19 - 21/08/2026)
+    subgraph ON_SHOW["5. TRIỂN LÃM VIETFISH 2026"]
+        Booth["Gặp gỡ tại Stand 609 & 709<br/>(Tư vấn trực tiếp, trao Cẩm nang bản cứng,<br/>quét app Lead & ghi Lead Form)"]
+        Success["ĐẠT MỤC TIÊU 20 CUỘC HẸN CHẤT LƯỢNG"]
+    end
+
+    %% Các luồng kết nối hành vi
+    VasepList --> Email1
+    Email1 --> Email2
+    Email2 --> Email3
+    Email1 & Email2 & Email3 -->|Quan tâm / Click link| Calendly
+    
+    VasepList --> Call1
+    Call1 -->|Đề xuất hẹn gặp & tặng Cẩm nang| Calendly
+    
+    PR --> LandingPage
+    PersonaAds --> Ads
+    Ads --> LandingPage
+    LandingPage -->|Tải Ebook / Điền form| Mailchimp
+    Mailchimp -->|Email nhắc lịch hẹn| Calendly
+    
+    Calendly -.->|Được kích hoạt bởi| OfferKit
+    Calendly -->|Đăng ký thành công| Booth
+    Booth --> Success
+
+    %% Định dạng CSS cho sơ đồ
+    style VasepList fill:#ffd700,stroke:#d4af37,stroke-width:2px,color:#000
+    style PersonaAds fill:#06B6D4,stroke:#0891b2,stroke-width:2px,color:#000
+    style Calendly fill:#10B981,stroke:#059669,stroke-width:3px,color:#000
+    style OfferKit fill:#ff5722,stroke:#bf360c,stroke-width:3px,color:#fff
+    style Success fill:#e91e63,stroke:#880e4f,stroke-width:4px,color:#fff
+            </pre>
+          </div>
+        </div>
+
+        <!-- Zoom Control Panel -->
+        <div class="diagram-controls">
+          <button class="btn-control" onclick="adjustZoom(-0.1)" title="Thu nhỏ"><i class="fa-solid fa-minus"></i></button>
+          <div class="zoom-indicator" id="zoom-value">100%</div>
+          <button class="btn-control" onclick="adjustZoom(0.1)" title="Phóng to"><i class="fa-solid fa-plus"></i></button>
+          <button class="btn-control" onclick="resetZoom()" title="Xem toàn bộ"><i class="fa-solid fa-expand"></i></button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Right Column: Interactive details -->
+    <div class="sidebar-section">
+      
+      <!-- Team Responsibilities Card -->
+      <div class="team-card">
+        <div class="section-title">
+          <i class="fa-solid fa-users-gear"></i>
+          <span>Phân Nhiệm Thành Viên (Team GOHA)</span>
+        </div>
+        <div class="team-grid">
+          <div class="member-row">
+            <div class="member-info">
+              <div class="member-avatar">JT</div>
+              <div>
+                <div class="member-name">Joachim Trung</div>
+                <div class="member-role">Landing Page / GDN Banner Designer</div>
+              </div>
+            </div>
+            <span class="task-badge pm">PM / Lead</span>
+          </div>
+          <div class="member-row">
+            <div class="member-info">
+              <div class="member-avatar">YK</div>
+              <div>
+                <div class="member-name">Yến Kiều</div>
+                <div class="member-role">Social Concept & Angles Creator</div>
+              </div>
+            </div>
+            <span class="task-badge ceo">CEO</span>
+          </div>
+          <div class="member-row">
+            <div class="member-info">
+              <div class="member-avatar">TB</div>
+              <div>
+                <div class="member-name">Toàn Bùi</div>
+                <div class="member-role">Mailchimp Automation / Ebook Translator</div>
+              </div>
+            </div>
+            <span class="task-badge founder">Founder</span>
+          </div>
+          <div class="member-row">
+            <div class="member-info">
+              <div class="member-avatar">LT</div>
+              <div>
+                <div class="member-name">Tử Luân Trần & Tuấn Anh Nguyễn</div>
+                <div class="member-role">LinkedIn, Facebook & GDN Ads Executors</div>
+              </div>
+            </div>
+            <span class="task-badge seo">SEO / Performance</span>
+          </div>
+          <div class="member-row">
+            <div class="member-info">
+              <div class="member-avatar">T</div>
+              <div>
+                <div class="member-name">Thor hỏi Thỏ</div>
+                <div class="member-role">Outbound PR Booking / AE Coordinator</div>
+              </div>
+            </div>
+            <span class="task-badge ae">AE / BD</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Interactive Phase Details Card -->
+      <div class="phase-details-card">
+        <div class="section-title">
+          <i class="fa-solid fa-list-check"></i>
+          <span>Chi Tiết Từng Giai Đoạn Phễu</span>
+        </div>
+        
+        <div class="phase-selector">
+          <button class="btn-phase active" onclick="switchPhase(1)">Data</button>
+          <button class="btn-phase" onclick="switchPhase(2)">Outbound</button>
+          <button class="btn-phase" onclick="switchPhase(3)">Inbound</button>
+          <button class="btn-phase" onclick="switchPhase(4)">Convert</button>
+          <button class="btn-phase" onclick="switchPhase(5)">Show</button>
+        </div>
+
+        <!-- Phase 1 Content -->
+        <div class="phase-content p1 active" id="phase-1">
+          <div class="phase-title-row">
+            <div class="phase-icon-box"><i class="fa-solid fa-database"></i></div>
+            <h4 class="phase-title">1. Nguồn Dữ Liệu & Tiếp Cận</h4>
+          </div>
+          <p class="phase-description">Khai thác và phân tích tệp khách hàng B2B trọng điểm để tiếp cận trước triển lãm.</p>
+          <h5 class="checklist-title">Các hạng mục chính</h5>
+          <ul class="checklist-list">
+            <li class="checklist-item check"><i class="fa-solid fa-circle-check"></i> <span><strong>Data 120 Hội viên VASEP:</strong> Cào và trích xuất sạch sẽ 100% email, điện thoại phòng ban, địa chỉ nhà máy & website.</span></li>
+            <li class="checklist-item process"><i class="fa-solid fa-circle-notch fa-spin"></i> <span><strong>B2B Persona Targeting:</strong> Thiết lập chính xác tệp chức danh: QA/QC Directors, Plant Managers, Giám đốc Kỹ thuật & OEMs.</span></li>
+          </ul>
+        </div>
+
+        <!-- Phase 2 Content -->
+        <div class="phase-content p2" id="phase-2">
+          <div class="phase-title-row">
+            <div class="phase-icon-box"><i class="fa-solid fa-paper-plane"></i></div>
+            <h4 class="phase-title">2. Kênh Outbound & PR</h4>
+          </div>
+          <p class="phase-description">Chủ động tiếp cận tệp leads mục tiêu và xuất bản báo chí B2B để củng cố chuyên gia.</p>
+          <h5 class="checklist-title">Các hạng mục chính</h5>
+          <ul class="checklist-list">
+            <li class="checklist-item process"><i class="fa-solid fa-circle-notch fa-spin"></i> <span><strong>PR Báo chí B2B:</strong> Booking 1 bài viết B2B trên CafeF/VnExpress + 1 bài viết chuyên sâu trên VASEP Portal kéo leads về Landing Page.</span></li>
+            <li class="checklist-item pending"><i class="fa-solid fa-circle"></i> <span><strong>Chuỗi 3 Email (Mailchimp):</strong> Soạn thảo kịch bản & setup gửi email tự động (Thư mời -> Ebook -> Nhắc lịch & Đặt hẹn).</span></li>
+            <li class="checklist-item pending"><i class="fa-solid fa-circle"></i> <span><strong>Outbound Telesales:</strong> Gọi điện giới thiệu và chào mời đặt lịch hẹn trực tiếp tại booth.</span></li>
+          </ul>
+        </div>
+
+        <!-- Phase 3 Content -->
+        <div class="phase-content p3" id="phase-3">
+          <div class="phase-title-row">
+            <div class="phase-icon-box"><i class="fa-solid fa-magnet"></i></div>
+            <h4 class="phase-title">3. Kênh Inbound</h4>
+          </div>
+          <p class="phase-description">Thu hút leads tự nhiên qua chiến dịch quảng cáo và trang đích tải tài liệu chuyên ngành.</p>
+          <h5 class="checklist-title">Các hạng mục chính</h5>
+          <ul class="checklist-list">
+            <li class="checklist-item process"><i class="fa-solid fa-circle-notch fa-spin"></i> <span><strong>B2B Paid Ads:</strong> Triển khai ads trên LinkedIn, Facebook & Google GDN (loại bỏ Zalo) nhắm chọn chính xác chức danh B2B.</span></li>
+            <li class="checklist-item process"><i class="fa-solid fa-circle-notch fa-spin"></i> <span><strong>Vietfish Landing Page:</strong> Thiết kế trang đích Việt hóa tối ưu cho chuyển đổi lịch hẹn/tải Ebook.</span></li>
+            <li class="checklist-item pending"><i class="fa-solid fa-circle"></i> <span><strong>Email Automation:</strong> Thiết lập chuỗi emails gửi tài liệu và điều hướng đặt hẹn tự động.</span></li>
+          </ul>
+        </div>
+
+        <!-- Phase 4 Content -->
+        <div class="phase-content p4" id="phase-4">
+          <div class="phase-title-row">
+            <div class="phase-icon-box"><i class="fa-solid fa-handshake"></i></div>
+            <h4 class="phase-title">4. Điểm Chuyển Đổi (Đặt Lịch)</h4>
+          </div>
+          <p class="phase-description">Kích thích hành động đặt trước giờ gặp bằng các quyền lợi kỹ thuật thực tế chất lượng.</p>
+          <h5 class="checklist-title">Các hạng mục chính</h5>
+          <ul class="checklist-list">
+            <li class="checklist-item check"><i class="fa-solid fa-circle-check"></i> <span><strong>Mồi nhử Ebook bản cứng:</strong> Tặng bản in cao cấp cuốn Cẩm nang Giải pháp Thủy hải sản (đã loại bỏ Audit & Sample Kit).</span></li>
+            <li class="checklist-item process"><i class="fa-solid fa-circle-notch fa-spin"></i> <span><strong>Calendly Setup:</strong> Khóa khung giờ 15 phút tư vấn chuyên môn cao cấp cùng chuyên gia Israel và Việt Nam.</span></li>
+          </ul>
+        </div>
+
+        <!-- Phase 5 Content -->
+        <div class="phase-content p5" id="phase-5">
+          <div class="phase-title-row">
+            <div class="phase-icon-box"><i class="fa-solid fa-fish"></i></div>
+            <h4 class="phase-title">5. Triển Lãm Vietfish 2026</h4>
+          </div>
+          <p class="phase-description">Hiện diện trực tiếp tại triển lãm thực tế từ 19 - 21/08/2026 ở SECC để hiện thực hóa leads.</p>
+          <h5 class="checklist-title">Các hạng mục chính</h5>
+          <ul class="checklist-list">
+            <li class="checklist-item pending"><i class="fa-solid fa-circle"></i> <span><strong>Tư vấn 1-1 tại Stand 609 & 709:</strong> Tiếp đón khách theo lịch hẹn tròn, trao Cẩm nang bản in và demo trực quan.</span></li>
+            <li class="checklist-item pending"><i class="fa-solid fa-circle"></i> <span><strong>Lead Capture:</strong> Quét app Lead của Ban Tổ Chức + ghi chép thủ công 100 trang Lead Form mẫu kèm namecard.</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom Tabs Area: Outreach Scripts Center -->
+  <div class="scripts-section">
+    <div class="section-title">
+      <i class="fa-solid fa-file-code"></i>
+      <span>Outreach Scripts Center (Bộ Kịch Bản Chiến Dịch)</span>
+    </div>
+    
+    <div class="scripts-tabs">
+      <button class="btn-tab active" onclick="switchScript(1)"><i class="fa-regular fa-envelope"></i> Email 1: Thư Mời</button>
+      <button class="btn-tab" onclick="switchScript(2)"><i class="fa-regular fa-envelope"></i> Email 2: Tặng Ebook</button>
+      <button class="btn-tab" onclick="switchScript(3)"><i class="fa-regular fa-envelope"></i> Email 3: Hẹn Gặp</button>
+      <button class="btn-tab" onclick="switchScript(4)"><i class="fa-solid fa-phone"></i> Kịch Bản Telesales</button>
+    </div>
+
+    <!-- Email 1 Content -->
+    <div class="tab-content active" id="script-1">
+      <div class="alert-info">
+        <i class="fa-solid fa-circle-info"></i>
+        <span><strong>Mục tiêu:</strong> Gửi thư mời chính thức và giới thiệu giải pháp băng tải TPE sạch để mở phễu.</span>
+      </div>
+      <div class="script-box">
+        <button class="btn-copy" onclick="copyText('text-email-1')"><i class="fa-regular fa-copy"></i> Sao chép</button>
+        <div class="script-text" id="text-email-1">
+          <strong>Tiêu đề:</strong> Thư mời: Trải nghiệm Băng tải TPE kháng Clo (Vật liệu DR) tại Vietfish 2026 - Stand 609 & 709
+
+          Kính gửi Anh/Chị [Tên/Chức danh QA-Kỹ thuật] - Ban Giám đốc [Tên Công ty],
+
+          Em là [Tên Sales], đại diện **Volta Belting Việt Nam** (Thương hiệu tiên phong từ Israel về giải pháp băng tải TPE đồng nhất siêu vệ sinh đạt chuẩn EHEDG).
+
+          Tại Triển lãm Vietfish 2026 diễn ra từ ngày **19 - 21/08/2026** tại **SECC, TP.HCM**, Volta trân trọng kính mời Anh/Chị ghé thăm gian hàng của chúng em tại **Stand số: 609 & 709, HALL A**.
+
+          Gian hàng năm nay sẽ trực tiếp trưng bày các công nghệ đột phá tối ưu riêng cho ngành chế biến của [Tên Công ty]:
+          * **Băng tải kháng Clo (Vật liệu DR):** Chuyên dụng cho dây chuyền mạ băng (glazing), loại bỏ hoàn toàn hiện tượng nứt gãy và nấm mốc.
+          * **Dây đai ép cá ngừ (Tuna-squeezing belts):** Thiết kế đục lỗ thoát nước tùy chỉnh, chống bám khuẩn bám mùi cực tốt.
+          * **Giải pháp máy tách xương (Bone separators):** Băng tải uốn dẻo chịu lực bền bỉ cho máy Baader-type.
+
+          Anh/Chị vui lòng chọn khung giờ ghé thăm thuận tiện nhất để chúng em được tiếp đón chu đáo:
+          **[NÚT ĐĂNG KÝ KHÓA LỊCH HẸN TRƯỚC TẠI BOOTH]** *(Link Calendly)*
+
+          Trân trọng kính mời,
+          Đội ngũ Volta Belting Việt Nam. (Hotline: +84 251 352 1967).
+        </div>
+      </div>
+    </div>
+
+    <!-- Email 2 Content -->
+    <div class="tab-content" id="script-2">
+      <div class="alert-info">
+        <i class="fa-solid fa-circle-info"></i>
+        <span><strong>Mục tiêu:</strong> Tạo giá trị bằng Ebook giải pháp thủy sản bản mềm và mời đặt hẹn nhận bản cứng.</span>
+      </div>
+      <div class="script-box">
+        <button class="btn-copy" onclick="copyText('text-email-2')"><i class="fa-regular fa-copy"></i> Sao chép</button>
+        <div class="script-text" id="text-email-2">
+          <strong>Tiêu đề:</strong> Tặng Ebook: Cẩm nang Giải pháp nâng cao Vệ sinh & Hiệu suất nhà máy Thủy hải sản
+
+          Kính gửi Anh/Chị [Tên/Chức danh QA-Kỹ thuật],
+
+          Trong chế biến thủy sản, việc đảm bảo tiêu chuẩn vệ sinh, loại bỏ vi khuẩn Listeria tại các khớp nối băng tải modular nhựa cũ luôn là thách thức lớn đối với Ban quản lý nhà máy.
+
+          Đại diện Volta Belting, em xin gửi tặng Anh/Chị bản mềm cuốn **"Cẩm nang Giải pháp Thủy hải sản (Volta Seafood Solutions Guide)"** được biên soạn bởi các chuyên gia kỹ thuật hàng đầu từ Israel:
+          * Phương pháp loại bỏ 100% rủi ro đứt sợi vải và rơi mảnh nhựa vào sản phẩm.
+          * Cách thức **Nhà máy Hinh Puh Việt Nam** tiết kiệm 61% chi phí vận hành hàng năm nhờ đổi sang băng tải Volta SuperDrive.
+          * Thông số kỹ thuật chi tiết của các kết cấu bề mặt chống dính (ITO 50, IRT nhám...).
+
+          Anh/Chị có thể tải bản mềm ngay tại đây:
+          **[NÚT TẢI EBOOK BẢN MỀM]**
+
+          Đặc biệt, Volta có chuẩn bị sẵn **bản in cứng cao cấp** của cuốn Cẩm nang này để gửi tặng trực tiếp khi Anh/Chị ghé thăm gian hàng **Stand 609 & 709** tại Vietfish tới đây.
+
+          Hẹn gặp lại Anh/Chị tại sự kiện,
+          Đội ngũ Volta Belting Việt Nam.
+        </div>
+      </div>
+    </div>
+
+    <!-- Email 3 Content -->
+    <div class="tab-content" id="script-3">
+      <div class="alert-info">
+        <i class="fa-solid fa-circle-info"></i>
+        <span><strong>Mục tiêu:</strong> Nhắc lịch sát sự kiện để "chốt hạ" lịch hẹn gặp với leads.</span>
+      </div>
+      <div class="script-box">
+        <button class="btn-copy" onclick="copyText('text-email-3')"><i class="fa-regular fa-copy"></i> Sao chép</button>
+        <div class="script-text" id="text-email-3">
+          <strong>Tiêu đề:</strong> Nhắc lịch hẹn: Gặp gỡ chuyên gia Volta & Nhận Cẩm nang bản cứng tại Vietfish (Stand 609 & 709)
+
+          Kính gửi Anh/Chị [Tên/Chức danh QA-Kỹ thuật],
+
+           Chỉ còn ít ngày nữa, Triển lãm Vietfish 2026 sẽ chính thức khai mạc từ **19 - 21/08/2026** tại **SECC, TP.HCM**.
+
+          Ban kỹ thuật của Volta Belting (gồm các chuyên gia từ Israel và Việt Nam) đã sẵn sàng tiếp đón Anh/Chị tại **Stand số 609 & 709, HALL A** để cùng trao đổi và tư vấn giải pháp tối ưu riêng cho nhà máy của mình.
+
+          Để chuẩn bị đón tiếp chu đáo nhất và trao gửi **bản in cứng cao cấp cuốn Cẩm nang Giải pháp**, Anh/Chị vui lòng đăng ký trước lịch hẹn 15 phút với chúng em tại đây:
+          **[NÚT ĐĂNG KÝ HẸN GẶP 15 PHÚT TẠI BOOTH]** *(Link Calendly)*
+
+          Trân trọng kính mời và rất hân hạnh được đón tiếp Anh/Chị!
+          Đội ngũ Volta Belting Việt Nam.
+        </div>
+      </div>
+    </div>
+
+    <!-- Telesales Content -->
+    <div class="tab-content" id="script-4">
+      <div class="alert-info">
+        <i class="fa-solid fa-circle-info"></i>
+        <span><strong>Mục tiêu:</strong> Gọi điện trực tiếp cho QA/QC, Kỹ sư của nhà máy lớn từ danh bạ VASEP.</span>
+      </div>
+      <div class="script-box">
+        <button class="btn-copy" onclick="copyText('text-call')"><i class="fa-regular fa-copy"></i> Sao chép</button>
+        <div class="script-text" id="text-call">
+          <strong>Telesales:</strong> *"Dạ em chào anh [Tên khách hàng], em là [Tên Sales] gọi điện từ hãng băng tải thực phẩm Volta Belting Israel. Em gọi điện để gửi lời mời trực tiếp đến anh ghé thăm gian hàng Volta tại triển lãm Vietfish từ **19 - 21 tháng 8** tới ở SECC, TP.HCM ạ. Gian hàng bên em nằm tại **Stand 609 & 709, HALL A**."*
+          
+          * **Khi khách hàng quan tâm:** 
+          *"Dạ tuyệt vời quá anh. Đợt này hãng lần đầu tiên tham dự chính thức, bên em có trưng bày các dòng **Băng tải kháng Clo vật liệu DR** chuyên dụng cho khâu mạ băng (glazing) và **Dây đai ép cá ngừ Tuna-squeezing** đục lỗ thoát nước để giải quyết triệt để lỗi nứt gãy băng cũ. Em muốn xin hẹn trước 15 phút tại booth để gửi tặng anh **bản in cứng cuốn Cẩm nang Giải pháp Thủy hải sản** được biên soạn riêng cho ngành chế biến của nhà máy mình, đồng thời tư vấn phương án kỹ thuật trực tiếp cùng chuyên gia của hãng. Bên em sẽ đón tiếp anh tại bàn tròn kỹ thuật phục vụ chu đáo ạ. Em xin phép đặt lịch hẹn cho anh vào [Ngày/Giờ] được không anh?"*
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span>Sao chép kịch bản thành công!</span>
+  </div>
+
+  <script>
+    // Initialize Mermaid Diagrams
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      securityLevel: 'loose',
+      flowchart: {
+        useMaxWidth: false,
+        htmlLabels: true
+      }
+    });
+
+    // Zoom & Pan Logic (Figma/Miro Style)
+    let currentZoom = 1.0;
+    const minZoom = 0.5;
+    const maxZoom = 2.5;
+    const stepZoom = 0.1;
+    
+    const wrapper = document.getElementById('diagram-wrapper');
+    const scrollArea = document.getElementById('scroll-area');
+    const zoomValueIndicator = document.getElementById('zoom-value');
+
+    function applyZoom() {
+      // Apply CSS transform scale to diagram wrapper
+      wrapper.style.transform = `scale(${currentZoom})`;
+      zoomValueIndicator.innerText = `${Math.round(currentZoom * 100)}%`;
+    }
+
+    function adjustZoom(amount) {
+      currentZoom = Math.min(maxZoom, Math.max(minZoom, currentZoom + amount));
+      applyZoom();
+    }
+
+    function resetZoom() {
+      currentZoom = 1.0;
+      applyZoom();
+      
+      // Center the scroll view
+      setTimeout(() => {
+        scrollArea.scrollLeft = (wrapper.scrollWidth - scrollArea.clientWidth) / 2;
+        scrollArea.scrollTop = (wrapper.scrollHeight - scrollArea.clientHeight) / 2;
+      }, 50);
+    }
+
+    // Drag-to-Scroll Pan Logic
+    let isDown = false;
+    let startX;
+    let startY;
+    let scrollLeft;
+    let scrollTop;
+
+    scrollArea.addEventListener('mousedown', (e) => {
+      // Only drag if left click
+      if (e.button !== 0) return;
+      isDown = true;
+      scrollArea.classList.add('grabbing');
+      startX = e.pageX - scrollArea.offsetLeft;
+      startY = e.pageY - scrollArea.offsetTop;
+      scrollLeft = scrollArea.scrollLeft;
+      scrollTop = scrollArea.scrollTop;
+    });
+
+    scrollArea.addEventListener('mouseleave', () => {
+      isDown = false;
+      scrollArea.classList.remove('grabbing');
+    });
+
+    scrollArea.addEventListener('mouseup', () => {
+      isDown = false;
+      scrollArea.classList.remove('grabbing');
+    });
+
+    scrollArea.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - scrollArea.offsetLeft;
+      const y = e.pageY - scrollArea.offsetTop;
+      const walkX = (x - startX) * 1.5; // Drag speed multiplier
+      const walkY = (y - startY) * 1.5;
+      scrollArea.scrollLeft = scrollLeft - walkX;
+      scrollArea.scrollTop = scrollTop - walkY;
+    });
+
+    // Auto-center scroll on load
+    window.addEventListener('load', () => {
+      // Wait for Mermaid to fully render the SVG
+      setTimeout(() => {
+        resetZoom();
+      }, 500);
+    });
+
+    // Phase Switcher Logic
+    function switchPhase(phaseId) {
+      // Deactivate all buttons & contents
+      document.querySelectorAll('.btn-phase').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.phase-content').forEach(content => content.classList.remove('active'));
+      
+      // Activate target
+      const targetBtn = document.querySelectorAll('.btn-phase')[phaseId - 1];
+      const targetContent = document.getElementById(`phase-${phaseId}`);
+      
+      if (targetBtn && targetContent) {
+        targetBtn.classList.add('active');
+        targetContent.classList.add('active');
+      }
+    }
+
+    // Script Tab Switcher Logic
+    function switchScript(scriptId) {
+      document.querySelectorAll('.btn-tab').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      
+      const targetTab = document.querySelectorAll('.btn-tab')[scriptId - 1];
+      const targetContent = document.getElementById(`script-${scriptId}`);
+      
+      if (targetTab && targetContent) {
+        targetTab.classList.add('active');
+        targetContent.classList.add('active');
+      }
+    }
+
+    // Copy to Clipboard Utility
+    function copyText(elementId) {
+      const textToCopy = document.getElementById(elementId).innerText;
+      
+      // Use clean copy method
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        showToast();
+      }).catch(err => {
+        console.error("Lỗi copy: ", err);
+      });
+    }
+
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
