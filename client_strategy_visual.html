@@ -15,7 +15,7 @@
       --bg-dark: #0a0a0a;       /* Nền đen sâu thẳm sang trọng */
       --text-light: #fcf9f5;     /* Nét chữ trắng ngà sạch sẽ */
       --text-muted: #a3a3a3;     /* Chữ phụ màu xám sáng */
-      --accent-orange: #e87750;  /* Màu cam đất thương hiệu của Tony */
+      --accent-yellow: #ffde2f;  /* Màu vàng thương hiệu lấy từ logo */
     }
 
     * {
@@ -53,19 +53,19 @@
       position: relative;
     }
 
-    /* Logo Brand Watermark */
+    /* Logo Brand Watermark (Góc trên bên trái, kích thước lớn gấp đôi) */
     .logo-container {
       position: absolute;
-      top: 45px;
+      top: 50px;
       left: 50px;
       display: flex;
       align-items: center;
     }
 
     .logo-img {
-      height: 40px;
+      height: 80px; /* Tăng từ 40px lên 80px (gấp đôi) */
       width: auto;
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
     /* Concept Visualization Area */
@@ -101,7 +101,7 @@
     }
 
     .column-right span.state-tag {
-      color: var(--accent-orange);
+      color: var(--accent-yellow);
     }
 
     /* SVG Canvas vẽ tay line-art tối giản trừu tượng */
@@ -195,8 +195,8 @@
 
     /* Tăng size của Bridge Tag và dùng font Inter nét đậm */
     .bridge-tag {
-      background-color: var(--accent-orange);
-      color: #ffffff;
+      background-color: var(--accent-yellow);
+      color: #0a0a0a; /* Đổi sang màu chữ tối để tương phản cực tốt trên nền vàng */
       border: 1.5px solid var(--text-light);
       border-radius: 20px;
       padding: 6px 18px;
@@ -284,36 +284,36 @@
         <div class="graphic-box unlocked">
           <!-- SVG: Mạng lưới tinh gọn, kết nối sâu sắc, lan tỏa giá trị lớn -->
           <svg width="280" height="280" style="position: absolute; top:0; left:0;">
-            <!-- 3 đường kết nối dày dặn màu cam thương hiệu Tony -->
-            <line x1="140" y1="140" x2="140" y2="50" stroke="var(--accent-orange)" stroke-width="4.5" stroke-linecap="round" />
-            <line x1="140" y1="140" x2="60" y2="190" stroke="var(--accent-orange)" stroke-width="4.5" stroke-linecap="round" />
-            <line x1="140" y1="140" x2="220" y2="190" stroke="var(--accent-orange)" stroke-width="4.5" stroke-linecap="round" />
+            <!-- 3 đường kết nối dày dặn màu vàng thương hiệu lấy từ logo -->
+            <line x1="140" y1="140" x2="140" y2="50" stroke="var(--accent-yellow)" stroke-width="4.5" stroke-linecap="round" />
+            <line x1="140" y1="140" x2="60" y2="190" stroke="var(--accent-yellow)" stroke-width="4.5" stroke-linecap="round" />
+            <line x1="140" y1="140" x2="220" y2="190" stroke="var(--accent-yellow)" stroke-width="4.5" stroke-linecap="round" />
 
             <!-- Nhân vật trung tâm vững chãi, tỏa sáng nhẹ -->
             <circle cx="140" cy="140" r="24" fill="rgba(252, 249, 245, 0.04)" />
             <circle cx="140" cy="140" r="14" fill="var(--bg-dark)" stroke="var(--text-light)" stroke-width="2.5" />
             <circle cx="140" cy="140" r="6" fill="var(--text-light)" />
 
-            <!-- Client Node 1 (Phía trên) - Thiết kế phát sáng, tỏa giá trị -->
-            <circle cx="140" cy="50" r="28" fill="rgba(232, 119, 80, 0.12)" />
+            <!-- Client Node 1 (Phía trên) - Thiết kế phát sáng, tỏa giá trị (Màu vàng) -->
+            <circle cx="140" cy="50" r="28" fill="rgba(255, 222, 47, 0.12)" />
             <circle cx="140" cy="50" r="15" fill="var(--bg-dark)" stroke="var(--text-light)" stroke-width="2.5" />
-            <circle cx="140" cy="50" r="6" fill="var(--accent-orange)" />
-            <path d="M 115 30 A 28 28 0 0 1 165 30" fill="none" stroke="var(--accent-orange)" stroke-width="2" stroke-linecap="round" />
-            <path d="M 105 20 A 42 42 0 0 1 175 20" fill="none" stroke="var(--accent-orange)" stroke-width="1.5" stroke-dasharray="3 3" stroke-linecap="round" />
+            <circle cx="140" cy="50" r="6" fill="var(--accent-yellow)" />
+            <path d="M 115 30 A 28 28 0 0 1 165 30" fill="none" stroke="var(--accent-yellow)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 105 20 A 42 42 0 0 1 175 20" fill="none" stroke="var(--accent-yellow)" stroke-width="1.5" stroke-dasharray="3 3" stroke-linecap="round" />
 
-            <!-- Client Node 2 (Dưới trái) - Tỏa sóng giá trị -->
-            <circle cx="60" cy="190" r="28" fill="rgba(232, 119, 80, 0.12)" />
+            <!-- Client Node 2 (Dưới trái) - Tỏa sóng giá trị (Màu vàng) -->
+            <circle cx="60" cy="190" r="28" fill="rgba(255, 222, 47, 0.12)" />
             <circle cx="60" cy="190" r="15" fill="var(--bg-dark)" stroke="var(--text-light)" stroke-width="2.5" />
-            <circle cx="60" cy="190" r="6" fill="var(--accent-orange)" />
-            <path d="M 40 210 A 28 28 0 0 1 40 170" fill="none" stroke="var(--accent-orange)" stroke-width="2" stroke-linecap="round" />
-            <path d="M 30 220 A 42 42 0 0 1 30 160" fill="none" stroke="var(--accent-orange)" stroke-width="1.5" stroke-dasharray="3 3" stroke-linecap="round" />
+            <circle cx="60" cy="190" r="6" fill="var(--accent-yellow)" />
+            <path d="M 40 210 A 28 28 0 0 1 40 170" fill="none" stroke="var(--accent-yellow)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 30 220 A 42 42 0 0 1 30 160" fill="none" stroke="var(--accent-yellow)" stroke-width="1.5" stroke-dasharray="3 3" stroke-linecap="round" />
 
-            <!-- Client Node 3 (Dưới phải) - Tỏa sóng giá trị -->
-            <circle cx="220" cy="190" r="28" fill="rgba(232, 119, 80, 0.12)" />
+            <!-- Client Node 3 (Dưới phải) - Tỏa sóng giá trị (Màu vàng) -->
+            <circle cx="220" cy="190" r="28" fill="rgba(255, 222, 47, 0.12)" />
             <circle cx="220" cy="190" r="15" fill="var(--bg-dark)" stroke="var(--text-light)" stroke-width="2.5" />
-            <circle cx="220" cy="190" r="6" fill="var(--accent-orange)" />
-            <path d="M 240 170 A 28 28 0 0 1 240 210" fill="none" stroke="var(--accent-orange)" stroke-width="2" stroke-linecap="round" />
-            <path d="M 250 160 A 42 42 0 0 1 250 220" fill="none" stroke="var(--accent-orange)" stroke-width="1.5" stroke-dasharray="3 3" stroke-linecap="round" />
+            <circle cx="220" cy="190" r="6" fill="var(--accent-yellow)" />
+            <path d="M 240 170 A 28 28 0 0 1 240 210" fill="none" stroke="var(--accent-yellow)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 250 160 A 42 42 0 0 1 250 220" fill="none" stroke="var(--accent-yellow)" stroke-width="1.5" stroke-dasharray="3 3" stroke-linecap="round" />
           </svg>
         </div>
         
