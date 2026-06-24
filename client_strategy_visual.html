@@ -53,6 +53,21 @@
       position: relative;
     }
 
+    /* Logo Brand Watermark */
+    .logo-container {
+      position: absolute;
+      top: 45px;
+      left: 50px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: auto;
+      opacity: 0.9;
+    }
+
     /* Concept Visualization Area */
     .visual-container {
       display: flex;
@@ -137,7 +152,7 @@
       font-weight: 600;
       margin-top: 35px;
       line-height: 1.5;
-      max-width: 320px; /* Nới rộng độ rộng dòng chữ */
+      max-width: 350px; /* Nới rộng độ rộng dòng chữ */
     }
 
     .column-left .caption-text {
@@ -197,6 +212,11 @@
 <body>
 
   <div class="board-wrapper" id="capture-area">
+
+    <!-- Logo Brand Watermark (Góc trên bên trái) -->
+    <div class="logo-container">
+      <img src="cropped-favicon.png" class="logo-img" alt="Logo">
+    </div>
     
     <!-- Visual Container -->
     <div class="visual-container">
@@ -247,7 +267,7 @@
         </div>
         
         <div class="caption-text">
-          Sức lực phân mảnh, chất lượng hời hợt, liên tục kiệt sức vì vận hành.
+          Phân tán nguồn lực, kiệt sức vì vận hành, luôn phải chạy theo pitching tìm khách, áp lực cao.
         </div>
       </div>
 
