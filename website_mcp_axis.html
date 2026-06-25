@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website MCP: Trục Kết Nối Con Người - AI Search - AI Agent (Dark Mode)</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Warm Dark Mode & Line Art Palette */
+      --bg-dark: #0a0a0a;       /* Nền đen sâu thẳm sang trọng */
+      --text-light: #fcf9f5;     /* Nét chữ trắng ngà sạch sẽ */
+      --text-muted: #a3a3a3;     /* Chữ phụ màu xám sáng */
+      --accent-yellow: #ffde2f;  /* Màu vàng thương hiệu lấy từ logo */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-dark); 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 1080px;
+      height: 1080px; /* Hình vuông tuyệt đối 1:1 */
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      color: var(--text-light);
+    }
+
+    /* Container holding the visual board (Clean Minimalism Square in Dark Mode) */
+    .board-wrapper {
+      background-color: var(--bg-dark);
+      padding: 60px 45px 65px 45px; 
+      border-radius: 20px;
+      border: 2.5px solid var(--text-light); /* Viền trắng mảnh line art dày dặn hơn */
+      width: 1020px;
+      height: 1020px; 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; 
+      align-items: center;
+      position: relative;
+    }
+
+    /* Logo Brand Watermark (Góc trên bên trái) */
+    .logo-container {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      display: flex;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .logo-img {
+      height: 80px;
+      width: auto;
+      opacity: 0.95;
+    }
+
+    /* Board Header */
+    .board-header {
+      width: 100%;
+      text-align: center;
+      margin-top: 35px;
+      margin-bottom: 10px;
+      z-index: 10;
+    }
+
+    .main-title {
+      font-size: 31px; 
+      font-weight: 850;
+      line-height: 1.4;
+      color: var(--text-light);
+      max-width: 740px; /* Tránh đè lên logo ở góc trái */
+      margin: 0 auto;
+      letter-spacing: -0.5px;
+    }
+
+    .main-title .highlight {
+      color: var(--accent-yellow);
+    }
+
+    .sub-title {
+      font-size: 15.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-top: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Diagram Area holding the SVG and absolute cards */
+    .diagram-container {
+      width: 100%;
+      height: 750px;
+      position: relative;
+      margin-top: 10px;
+    }
+
+    /* Text Description Cards positioned absolutely around the nodes */
+    .desc-card {
+      position: absolute;
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(252, 249, 245, 0.15);
+      border-radius: 12px;
+      padding: 16px 20px;
+      box-shadow: 4px 4px 0px rgba(252, 249, 245, 0.03);
+      z-index: 10;
+    }
+
+    .desc-card h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--accent-yellow);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .desc-card p {
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="board-wrapper" id="capture-area">
+
+    <!-- Logo Brand Watermark (Góc trên bên trái) -->
+    <div class="logo-container">
+      <img src="cropped-favicon.png" class="logo-img" alt="Logo">
+    </div>
+
+    <!-- Header chứa headline câu quote -->
+    <div class="board-header">
+      <h1 class="main-title">
+        Website MCP: Trục kết nối bối cảnh giữa <span class="highlight">Con người</span> – <span class="highlight">AI Search</span> – <span class="highlight">AI Agent</span>
+      </h1>
+      <p class="sub-title">Giao thức Model Context Protocol mở khóa khả năng đọc hiểu và vận hành tự động của AI</p>
+    </div>
+    
+    <!-- Diagram Container holding SVG and Info Cards -->
+    <div class="diagram-container">
+      
+      <!-- Central Vector Diagram SVG -->
+      <svg width="930" height="750" style="position: absolute; top:0; left:0; z-index: 5;">
+        <!-- Radial Bidirectional Connections -->
+        <!-- 1. Center to Top (Human) -->
+        <line x1="465" y1="450" x2="465" y2="305" stroke="var(--accent-yellow)" stroke-width="3" stroke-dasharray="6 4" />
+        <path d="M 460 435 L 465 450 L 470 435 M 460 320 L 465 305 L 470 320" fill="none" stroke="var(--accent-yellow)" stroke-width="3" stroke-linecap="round" />
+
+        <!-- 2. Center to Bottom-Left (AI Search) -->
+        <line x1="385" y1="585" x2="295" y2="630" stroke="var(--accent-yellow)" stroke-width="3" stroke-dasharray="6 4" />
+        <path d="M 378 573 L 385 585 L 371 585 M 309 630 L 295 630 L 302 618" fill="none" stroke="var(--accent-yellow)" stroke-width="3" stroke-linecap="round" />
+
+        <!-- 3. Center to Bottom-Right (AI Agent) -->
+        <line x1="545" y1="585" x2="635" y2="630" stroke="var(--accent-yellow)" stroke-width="3" stroke-dasharray="6 4" />
+        <path d="M 552 573 L 545 585 L 559 585 M 621 630 L 635 630 L 628 618" fill="none" stroke="var(--accent-yellow)" stroke-width="3" stroke-linecap="round" />
+
+        <!-- Center Hub Node: WEBSITE MCP -->
+        <circle cx="465" cy="540" r="90" fill="#141414" stroke="var(--accent-yellow)" stroke-width="3" />
+        <circle cx="465" cy="540" r="82" fill="none" stroke="var(--accent-yellow)" stroke-width="1" stroke-dasharray="4 3" />
+        <text x="465" y="535" text-anchor="middle" fill="var(--accent-yellow)" font-size="20" font-weight="900" letter-spacing="1px">WEBSITE MCP</text>
+        <text x="465" y="558" text-anchor="middle" fill="var(--text-light)" font-size="11" font-weight="600" opacity="0.85" letter-spacing="0.5px">TRỤC KẾT NỐI BỐI CẢNH</text>
+        <text x="465" y="575" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-weight="500">Model Context Protocol</text>
+
+        <!-- Top Node: CON NGƯỜI (HUMAN) -->
+        <circle cx="465" cy="240" r="65" fill="#141414" stroke="var(--text-light)" stroke-width="2.5" />
+        <!-- User Icon -->
+        <circle cx="465" cy="222" r="10" fill="none" stroke="var(--text-light)" stroke-width="2" />
+        <path d="M 447 258 A 18 18 0 0 1 483 258" fill="none" stroke="var(--text-light)" stroke-width="2" stroke-linecap="round" />
+        <text x="465" y="288" text-anchor="middle" fill="var(--text-light)" font-size="12" font-weight="800" letter-spacing="0.5px">HUMAN (UI)</text>
+
+        <!-- Bottom-Left Node: AI SEARCH -->
+        <circle cx="240" cy="670" r="65" fill="#141414" stroke="var(--text-light)" stroke-width="2.5" />
+        <!-- Search Icon -->
+        <circle cx="235" cy="662" r="10" fill="none" stroke="var(--text-light)" stroke-width="2" />
+        <line x1="242" y1="669" x2="254" y2="681" stroke="var(--text-light)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 231 658 L 239 658 L 235 666 Z" fill="var(--accent-yellow)" />
+        <text x="240" y="718" text-anchor="middle" fill="var(--text-light)" font-size="12" font-weight="800" letter-spacing="0.5px">AI SEARCH</text>
+
+        <!-- Bottom-Right Node: AI AGENT -->
+        <circle cx="690" cy="670" r="65" fill="#141414" stroke="var(--text-light)" stroke-width="2.5" />
+        <!-- Robot Node Icon -->
+        <rect x="675" y="650" width="30" height="24" rx="4" fill="none" stroke="var(--text-light)" stroke-width="2" />
+        <circle cx="683" cy="662" r="2" fill="var(--text-light)" />
+        <circle cx="697" cy="662" r="2" fill="var(--text-light)" />
+        <path d="M 682 650 L 686 642 L 694 642 L 698 650" fill="none" stroke="var(--text-light)" stroke-width="1.5" stroke-linecap="round" />
+        <circle cx="690" cy="662" r="2.5" fill="var(--accent-yellow)" />
+        <line x1="690" y1="674" x2="690" y2="682" stroke="var(--text-light)" stroke-width="1.5" />
+        <text x="690" y="718" text-anchor="middle" fill="var(--text-light)" font-size="12" font-weight="800" letter-spacing="0.5px">AI AGENT</text>
+      </svg>
+
+      <!-- Description Cards positioned next to the nodes -->
+      <!-- Top Card (aligned with Top Node) -->
+      <div class="desc-card" style="left: 575px; top: 175px; width: 330px;">
+        <h3>Đọc Hiểu Giao Diện (UI)</h3>
+        <p>Con người truy cập website qua trình duyệt trực quan, tiếp thu nội dung thiết kế và hình ảnh để đánh giá chất lượng doanh nghiệp.</p>
+      </div>
+
+      <!-- Bottom-Left Card (aligned with Bottom-Left Node) -->
+      <div class="desc-card" style="left: 20px; top: 450px; width: 320px;">
+        <h3>Lọc Dữ Liệu Có Cấu Trúc</h3>
+        <p>Các công cụ AI Search (Perplexity, ChatGPT Search) cào quét và trích xuất dữ liệu của website để trả lời trực tiếp câu hỏi kèm link dẫn chứng.</p>
+      </div>
+
+      <!-- Bottom-Right Card (aligned with Bottom-Right Node) -->
+      <div class="desc-card" style="left: 590px; top: 450px; width: 320px;">
+        <h3>Kết Nối Thực Thi Tác Vụ</h3>
+        <p>AI Agent sử dụng giao thức Model Context Protocol (MCP) kết nối trực tiếp website làm tài nguyên bối cảnh để tự động thực thi các tác vụ.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
