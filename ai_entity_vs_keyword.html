@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI: Entity vs. Keyword (Dark Mode)</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Warm Dark Mode & Line Art Palette */
+      --bg-dark: #0a0a0a;       /* Nền đen sâu thẳm sang trọng */
+      --text-light: #fcf9f5;     /* Nét chữ trắng ngà sạch sẽ */
+      --text-muted: #a3a3a3;     /* Chữ phụ màu xám sáng */
+      --accent-yellow: #ffde2f;  /* Màu vàng thương hiệu lấy từ logo */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-dark); 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 1080px;
+      height: 1080px; /* Hình vuông tuyệt đối 1:1 */
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      color: var(--text-light);
+    }
+
+    /* Container holding the visual board (Clean Minimalism Square in Dark Mode) */
+    .board-wrapper {
+      background-color: var(--bg-dark);
+      padding: 60px 50px 75px 50px; 
+      border-radius: 20px;
+      border: 2.5px solid var(--text-light); /* Viền trắng mảnh line art dày dặn hơn */
+      width: 1020px;
+      height: 1020px; 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; 
+      align-items: center;
+      position: relative;
+    }
+
+    /* Logo Brand Watermark (Góc trên bên trái) */
+    .logo-container {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      display: flex;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .logo-img {
+      height: 80px;
+      width: auto;
+      opacity: 0.95;
+    }
+
+    /* Board Header - Tiêu đề lớn chứa câu quote */
+    .board-header {
+      width: 100%;
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      z-index: 10;
+    }
+
+    .main-title {
+      font-size: 30px; 
+      font-weight: 850;
+      line-height: 1.45;
+      color: var(--text-light);
+      max-width: 760px; /* Tránh đè lên logo ở góc trái */
+      margin: 0 auto;
+      letter-spacing: -0.5px;
+    }
+
+    .main-title .highlight {
+      color: var(--accent-yellow);
+    }
+
+    /* Concept Visualization Area */
+    .visual-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 0 10px;
+      position: relative;
+      margin-bottom: 30px; 
+    }
+
+    /* Cột biểu thị từng trạng thái */
+    .visual-column {
+      width: 43%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Tăng size chữ vượt bậc của State Tag - Font Inter Bold siêu nét */
+    .visual-column span.state-tag {
+      font-size: 26px; 
+      font-weight: 900; 
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 35px;
+    }
+
+    .column-left span.state-tag {
+      color: var(--text-muted);
+    }
+
+    .column-right span.state-tag {
+      color: var(--accent-yellow);
+    }
+
+    /* SVG Canvas vẽ tay line-art tối giản trừu tượng */
+    .graphic-box {
+      width: 280px;
+      height: 280px;
+      background: #141414; /* Nền xám đen rất nhẹ tạo khối hộp */
+      border: 2px solid var(--text-light);
+      border-radius: 16px;
+      box-shadow: 4px 4px 0px rgba(252, 249, 245, 0.05);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Box bên phải phá vỡ ranh giới (mở toang góc trên và phải) */
+    .graphic-box.unlocked {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    /* Tạo các đường viền giả cho box bên phải chỉ giữ lại cạnh dưới và cạnh trái */
+    .graphic-box.unlocked::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2.5px;
+      background-color: var(--text-light);
+    }
+
+    .graphic-box.unlocked::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2.5px;
+      height: 100%;
+      background-color: var(--text-light);
+    }
+
+    /* Tăng size chữ Caption Text bên dưới để đọc siêu dễ dàng, dùng phông Inter nét căng */
+    .caption-text {
+      font-size: 23px; 
+      font-weight: 600;
+      margin-top: 35px;
+      line-height: 1.5;
+      max-width: 350px; 
+    }
+
+    .column-left .caption-text {
+      color: var(--text-muted);
+    }
+
+    .column-right .caption-text {
+      color: var(--text-light);
+    }
+
+    /* Cầu nối / Mũi tên chuyển giao ở giữa */
+    .transition-bridge {
+      width: 14%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .transition-arrow {
+      width: 80px; 
+      height: 2px;
+      background-color: var(--text-light);
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .transition-arrow::after {
+      content: '';
+      position: absolute;
+      right: -2px;
+      top: -5px;
+      width: 12px;
+      height: 12px;
+      border-top: 2px solid var(--text-light);
+      border-right: 2px solid var(--text-light);
+      transform: rotate(45deg);
+    }
+
+    /* Tăng size của Bridge Tag và dùng font Inter nét đậm */
+    .bridge-tag {
+      background-color: var(--accent-yellow);
+      color: #0a0a0a; 
+      border: 1.5px solid var(--text-light);
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 15px; 
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="board-wrapper" id="capture-area">
+
+    <!-- Logo Brand Watermark (Góc trên bên trái) -->
+    <div class="logo-container">
+      <img src="cropped-favicon.png" class="logo-img" alt="Logo">
+    </div>
+
+    <!-- Header chứa câu quote chính -->
+    <div class="board-header">
+      <h1 class="main-title">
+        “AI không nhìn thế giới bằng keyword, nó nhìn dưới dạng <span class="highlight">entity</span> và <span class="highlight">mối quan hệ</span>.”
+      </h1>
+    </div>
+    
+    <!-- Visual Container -->
+    <div class="visual-container">
+      
+      <!-- Column Left: Scattered Keywords -->
+      <div class="visual-column column-left">
+        <span class="state-tag">Bảng Keyword Rời Rạc</span>
+        
+        <div class="graphic-box">
+          <!-- SVG: Các khối từ khóa nằm rải rác không kết nối -->
+          <svg width="280" height="280" style="position: absolute; top:0; left:0;">
+            <!-- Block 1 -->
+            <rect x="30" y="40" width="105" height="34" rx="6" fill="#141414" stroke="#333" stroke-width="1.5" stroke-dasharray="3 3" />
+            <text x="82" y="61" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-weight="600">Từ khóa rời rạc</text>
+
+            <!-- Block 2 -->
+            <rect x="150" y="60" width="100" height="34" rx="6" fill="#141414" stroke="#333" stroke-width="1.5" stroke-dasharray="3 3" />
+            <text x="200" y="81" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-weight="600">SEO Blog rời</text>
+
+            <!-- Block 3 -->
+            <rect x="35" y="110" width="95" height="34" rx="6" fill="#141414" stroke="#333" stroke-width="1.5" stroke-dasharray="3 3" />
+            <text x="82" y="131" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-weight="600">Backlink mua</text>
+
+            <!-- Block 4 -->
+            <rect x="145" y="140" width="105" height="34" rx="6" fill="#141414" stroke="#333" stroke-width="1.5" stroke-dasharray="3 3" />
+            <text x="197" y="161" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-weight="600">Mật độ keyword</text>
+
+            <!-- Block 5 -->
+            <rect x="25" y="180" width="110" height="34" rx="6" fill="#141414" stroke="#333" stroke-width="1.5" stroke-dasharray="3 3" />
+            <text x="80" y="201" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-weight="600">Content đại trà</text>
+
+            <!-- Block 6 -->
+            <rect x="150" y="210" width="95" height="34" rx="6" fill="#141414" stroke="#333" stroke-width="1.5" stroke-dasharray="3 3" />
+            <text x="197" y="231" text-anchor="middle" fill="var(--text-muted)" font-size="11" font-weight="600">SEO Tag rời</text>
+          </svg>
+        </div>
+        
+        <div class="caption-text">
+          Dữ liệu rời rạc: Ném hàng loạt bài blog không cấu trúc làm AI bối rối, khó hiểu được bức tranh lớn của bạn.
+        </div>
+      </div>
+
+      <!-- Transition Bridge -->
+      <div class="transition-bridge">
+        <div class="transition-arrow"></div>
+        <div class="bridge-tag">Entity Graph</div>
+      </div>
+
+      <!-- Column Right: Linked Entity Network -->
+      <div class="visual-column column-right">
+        <span class="state-tag">Mạng Thực Thể Liên Kết</span>
+        
+        <div class="graphic-box unlocked">
+          <!-- SVG: Đồ thị tri thức (Entity-Relationship Graph) màu vàng phát sáng -->
+          <svg width="280" height="280" style="position: absolute; top:0; left:0;">
+            <!-- Vòng tròn nền nét đứt màu vàng -->
+            <circle cx="140" cy="140" r="100" fill="rgba(255, 222, 47, 0.02)" stroke="var(--accent-yellow)" stroke-width="1.5" stroke-dasharray="3 3" />
+            
+            <!-- Các đường liên kết mối quan hệ thực thể -->
+            <line x1="140" y1="140" x2="140" y2="55" stroke="var(--accent-yellow)" stroke-width="2" />
+            <line x1="140" y1="140" x2="66" y2="97" stroke="var(--accent-yellow)" stroke-width="2" />
+            <line x1="140" y1="140" x2="66" y2="183" stroke="var(--accent-yellow)" stroke-width="2" />
+            <line x1="140" y1="140" x2="214" y2="97" stroke="var(--accent-yellow)" stroke-width="2" />
+            <line x1="140" y1="140" x2="214" y2="183" stroke="var(--accent-yellow)" stroke-width="2" />
+            <line x1="140" y1="140" x2="140" y2="225" stroke="var(--accent-yellow)" stroke-width="2" />
+
+            <!-- Thực thể trung tâm (BẠN/ENTITY) -->
+            <circle cx="140" cy="140" r="28" fill="var(--bg-dark)" stroke="var(--accent-yellow)" stroke-width="2.5" />
+            <text x="140" y="144" text-anchor="middle" fill="var(--accent-yellow)" font-size="11" font-weight="900" letter-spacing="0.5px">ENTITY</text>
+
+            <!-- Các nút thực thể xung quanh và nhãn tương ứng -->
+            <!-- 1. Sản phẩm -->
+            <circle cx="140" cy="55" r="7" fill="var(--text-light)" stroke="var(--accent-yellow)" stroke-width="1" />
+            <text x="140" y="40" text-anchor="middle" fill="var(--text-light)" font-size="11" font-weight="700">Sản phẩm</text>
+
+            <!-- 2. Ngành -->
+            <circle cx="66" cy="97" r="7" fill="var(--text-light)" stroke="var(--accent-yellow)" stroke-width="1" />
+            <text x="50" y="90" text-anchor="end" fill="var(--text-light)" font-size="11" font-weight="700">Ngành</text>
+
+            <!-- 3. Pain Point -->
+            <circle cx="66" cy="183" r="7" fill="var(--text-light)" stroke="var(--accent-yellow)" stroke-width="1" />
+            <text x="50" y="198" text-anchor="end" fill="var(--text-light)" font-size="11" font-weight="700">Pain Point</text>
+
+            <!-- 4. Giải pháp -->
+            <circle cx="214" cy="97" r="7" fill="var(--text-light)" stroke="var(--accent-yellow)" stroke-width="1" />
+            <text x="230" y="90" text-anchor="start" fill="var(--text-light)" font-size="11" font-weight="700">Giải pháp</text>
+
+            <!-- 5. Đối thủ -->
+            <circle cx="214" cy="183" r="7" fill="var(--text-light)" stroke="var(--accent-yellow)" stroke-width="1" />
+            <text x="230" y="198" text-anchor="start" fill="var(--text-light)" font-size="11" font-weight="700">Đối thủ</text>
+
+            <!-- 6. Công ty -->
+            <circle cx="140" cy="225" r="7" fill="var(--text-light)" stroke="var(--accent-yellow)" stroke-width="1" />
+            <text x="140" y="247" text-anchor="middle" fill="var(--text-light)" font-size="11" font-weight="700">Công ty</text>
+          </svg>
+        </div>
+        
+        <div class="caption-text">
+          Bức tranh toàn cảnh: Cấu trúc hóa thông tin rõ ràng giúp AI lập tức đọc vị bạn là ai, giải quyết được vấn đề gì.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
