@@ -159,70 +159,76 @@
       
       <!-- Central Vector Diagram SVG -->
       <svg width="930" height="750" style="position: absolute; top:0; left:0; z-index: 5;">
+        <defs>
+          <marker id="arrow-forward" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 2 2 L 8 5 L 2 8 Z" fill="var(--accent-yellow)" />
+          </marker>
+          <marker id="arrow-backward" viewBox="0 0 10 10" refX="4" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 8 2 L 2 5 L 8 8 Z" fill="var(--accent-yellow)" />
+          </marker>
+        </defs>
+
         <!-- Radial Bidirectional Connections -->
         <!-- 1. Center to Top (Human) -->
-        <line x1="465" y1="450" x2="465" y2="305" stroke="var(--accent-yellow)" stroke-width="3" stroke-dasharray="6 4" />
-        <path d="M 460 435 L 465 450 L 470 435 M 460 320 L 465 305 L 470 320" fill="none" stroke="var(--accent-yellow)" stroke-width="3" stroke-linecap="round" />
+        <line x1="465" y1="395" x2="465" y2="300" stroke="var(--accent-yellow)" stroke-width="2.5" stroke-dasharray="5 3" marker-start="url(#arrow-backward)" marker-end="url(#arrow-forward)" />
 
         <!-- 2. Center to Bottom-Left (AI Search) -->
-        <line x1="385" y1="585" x2="295" y2="630" stroke="var(--accent-yellow)" stroke-width="3" stroke-dasharray="6 4" />
-        <path d="M 378 573 L 385 585 L 371 585 M 309 630 L 295 630 L 302 618" fill="none" stroke="var(--accent-yellow)" stroke-width="3" stroke-linecap="round" />
+        <line x1="391" y1="523" x2="309" y2="570" stroke="var(--accent-yellow)" stroke-width="2.5" stroke-dasharray="5 3" marker-start="url(#arrow-backward)" marker-end="url(#arrow-forward)" />
 
         <!-- 3. Center to Bottom-Right (AI Agent) -->
-        <line x1="545" y1="585" x2="635" y2="630" stroke="var(--accent-yellow)" stroke-width="3" stroke-dasharray="6 4" />
-        <path d="M 552 573 L 545 585 L 559 585 M 621 630 L 635 630 L 628 618" fill="none" stroke="var(--accent-yellow)" stroke-width="3" stroke-linecap="round" />
+        <line x1="539" y1="523" x2="621" y2="570" stroke="var(--accent-yellow)" stroke-width="2.5" stroke-dasharray="5 3" marker-start="url(#arrow-backward)" marker-end="url(#arrow-forward)" />
 
         <!-- Center Hub Node: WEBSITE MCP -->
-        <circle cx="465" cy="540" r="90" fill="#141414" stroke="var(--accent-yellow)" stroke-width="3" />
-        <circle cx="465" cy="540" r="82" fill="none" stroke="var(--accent-yellow)" stroke-width="1" stroke-dasharray="4 3" />
-        <text x="465" y="535" text-anchor="middle" fill="var(--accent-yellow)" font-size="20" font-weight="900" letter-spacing="1px">WEBSITE MCP</text>
-        <text x="465" y="558" text-anchor="middle" fill="var(--text-light)" font-size="11" font-weight="600" opacity="0.85" letter-spacing="0.5px">TRỤC KẾT NỐI BỐI CẢNH</text>
-        <text x="465" y="575" text-anchor="middle" fill="var(--text-muted)" font-size="9" font-weight="500">Model Context Protocol</text>
+        <circle cx="465" cy="480" r="80" fill="#141414" stroke="var(--accent-yellow)" stroke-width="3" />
+        <circle cx="465" cy="480" r="72" fill="none" stroke="var(--accent-yellow)" stroke-width="1" stroke-dasharray="4 3" opacity="0.6" />
+        <text x="465" y="472" text-anchor="middle" fill="var(--accent-yellow)" font-size="19" font-weight="900" letter-spacing="1px">WEBSITE MCP</text>
+        <text x="465" y="495" text-anchor="middle" fill="var(--text-light)" font-size="10.5" font-weight="600" opacity="0.85" letter-spacing="0.5px">TRỤC KẾT NỐI BỐI CẢNH</text>
+        <text x="465" y="512" text-anchor="middle" fill="var(--text-muted)" font-size="8.5" font-weight="500">Model Context Protocol</text>
 
         <!-- Top Node: CON NGƯỜI (HUMAN) -->
-        <circle cx="465" cy="240" r="65" fill="#141414" stroke="var(--text-light)" stroke-width="2.5" />
+        <circle cx="465" cy="230" r="65" fill="#141414" stroke="var(--text-light)" stroke-width="2.5" />
         <!-- User Icon -->
-        <circle cx="465" cy="222" r="10" fill="none" stroke="var(--text-light)" stroke-width="2" />
-        <path d="M 447 258 A 18 18 0 0 1 483 258" fill="none" stroke="var(--text-light)" stroke-width="2" stroke-linecap="round" />
-        <text x="465" y="288" text-anchor="middle" fill="var(--text-light)" font-size="12" font-weight="800" letter-spacing="0.5px">HUMAN (UI)</text>
+        <circle cx="465" cy="212" r="10" fill="none" stroke="var(--text-light)" stroke-width="2" />
+        <path d="M 447 248 A 18 18 0 0 1 483 248" fill="none" stroke="var(--text-light)" stroke-width="2" stroke-linecap="round" />
+        <text x="465" y="278" text-anchor="middle" fill="var(--text-light)" font-size="12" font-weight="800" letter-spacing="0.5px">HUMAN (UI)</text>
 
         <!-- Bottom-Left Node: AI SEARCH -->
-        <circle cx="240" cy="670" r="65" fill="#141414" stroke="var(--text-light)" stroke-width="2.5" />
+        <circle cx="248" cy="605" r="65" fill="#141414" stroke="var(--text-light)" stroke-width="2.5" />
         <!-- Search Icon -->
-        <circle cx="235" cy="662" r="10" fill="none" stroke="var(--text-light)" stroke-width="2" />
-        <line x1="242" y1="669" x2="254" y2="681" stroke="var(--text-light)" stroke-width="2" stroke-linecap="round" />
-        <path d="M 231 658 L 239 658 L 235 666 Z" fill="var(--accent-yellow)" />
-        <text x="240" y="718" text-anchor="middle" fill="var(--text-light)" font-size="12" font-weight="800" letter-spacing="0.5px">AI SEARCH</text>
+        <circle cx="243" cy="597" r="10" fill="none" stroke="var(--text-light)" stroke-width="2" />
+        <line x1="250" y1="604" x2="262" y2="616" stroke="var(--text-light)" stroke-width="2" stroke-linecap="round" />
+        <path d="M 239 593 L 247 593 L 243 601 Z" fill="var(--accent-yellow)" />
+        <text x="248" y="653" text-anchor="middle" fill="var(--text-light)" font-size="12" font-weight="800" letter-spacing="0.5px">AI SEARCH</text>
 
         <!-- Bottom-Right Node: AI AGENT -->
-        <circle cx="690" cy="670" r="65" fill="#141414" stroke="var(--text-light)" stroke-width="2.5" />
+        <circle cx="682" cy="605" r="65" fill="#141414" stroke="var(--text-light)" stroke-width="2.5" />
         <!-- Robot Node Icon -->
-        <rect x="675" y="650" width="30" height="24" rx="4" fill="none" stroke="var(--text-light)" stroke-width="2" />
-        <circle cx="683" cy="662" r="2" fill="var(--text-light)" />
-        <circle cx="697" cy="662" r="2" fill="var(--text-light)" />
-        <path d="M 682 650 L 686 642 L 694 642 L 698 650" fill="none" stroke="var(--text-light)" stroke-width="1.5" stroke-linecap="round" />
-        <circle cx="690" cy="662" r="2.5" fill="var(--accent-yellow)" />
-        <line x1="690" y1="674" x2="690" y2="682" stroke="var(--text-light)" stroke-width="1.5" />
-        <text x="690" y="718" text-anchor="middle" fill="var(--text-light)" font-size="12" font-weight="800" letter-spacing="0.5px">AI AGENT</text>
+        <rect x="667" y="585" width="30" height="24" rx="4" fill="none" stroke="var(--text-light)" stroke-width="2" />
+        <circle cx="675" cy="597" r="2" fill="var(--text-light)" />
+        <circle cx="689" cy="597" r="2" fill="var(--text-light)" />
+        <path d="M 674 585 L 678 577 L 686 577 L 690 585" fill="none" stroke="var(--text-light)" stroke-width="1.5" stroke-linecap="round" />
+        <circle cx="682" cy="597" r="2.5" fill="var(--accent-yellow)" />
+        <line x1="682" y1="609" x2="682" y2="617" stroke="var(--text-light)" stroke-width="1.5" />
+        <text x="682" y="653" text-anchor="middle" fill="var(--text-light)" font-size="12" font-weight="800" letter-spacing="0.5px">AI AGENT</text>
       </svg>
 
       <!-- Description Cards positioned next to the nodes -->
       <!-- Top Card (aligned with Top Node) -->
-      <div class="desc-card" style="left: 575px; top: 175px; width: 330px;">
-        <h3>Đọc Hiểu Giao Diện (UI)</h3>
-        <p>Con người truy cập website qua trình duyệt trực quan, tiếp thu nội dung thiết kế và hình ảnh để đánh giá chất lượng doanh nghiệp.</p>
+      <div class="desc-card" style="left: 560px; top: 165px; width: 330px;">
+        <h3>Trải nghiệm UI/UX</h3>
+        <p>Người dùng tương tác qua giao diện trực quan, đánh giá uy tín qua thiết kế và nội dung.</p>
       </div>
 
       <!-- Bottom-Left Card (aligned with Bottom-Left Node) -->
-      <div class="desc-card" style="left: 20px; top: 450px; width: 320px;">
-        <h3>Lọc Dữ Liệu Có Cấu Trúc</h3>
-        <p>Các công cụ AI Search (Perplexity, ChatGPT Search) cào quét và trích xuất dữ liệu của website để trả lời trực tiếp câu hỏi kèm link dẫn chứng.</p>
+      <div class="desc-card" style="left: 20px; top: 410px; width: 320px;">
+        <h3>AI Search (GEO)</h3>
+        <p>Các công cụ tìm kiếm (Perplexity, ChatGPT Search) quét dữ liệu để trả lời trực tiếp kèm trích dẫn.</p>
       </div>
 
       <!-- Bottom-Right Card (aligned with Bottom-Right Node) -->
-      <div class="desc-card" style="left: 590px; top: 450px; width: 320px;">
-        <h3>Kết Nối Thực Thi Tác Vụ</h3>
-        <p>AI Agent sử dụng giao thức Model Context Protocol (MCP) kết nối trực tiếp website làm tài nguyên bối cảnh để tự động thực thi các tác vụ.</p>
+      <div class="desc-card" style="left: 590px; top: 410px; width: 320px;">
+        <h3>AI Agent (MCP)</h3>
+        <p>Các tác nhân tự hành kết nối trực tiếp dữ liệu và công cụ của website để thực thi tác vụ tự động.</p>
       </div>
 
     </div>
