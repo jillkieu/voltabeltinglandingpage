@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Search Visibility (Dark Mode)</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Warm Dark Mode & Line Art Palette */
+      --bg-dark: #0a0a0a;       /* Nền đen sâu thẳm sang trọng */
+      --text-light: #fcf9f5;     /* Nét chữ trắng ngà sạch sẽ */
+      --text-muted: #a3a3a3;     /* Chữ phụ màu xám sáng */
+      --accent-yellow: #ffde2f;  /* Màu vàng thương hiệu lấy từ logo */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-dark); 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 1080px;
+      height: 1080px; /* Hình vuông tuyệt đối 1:1 */
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      color: var(--text-light);
+    }
+
+    /* Container holding the visual board (Clean Minimalism Square in Dark Mode) */
+    .board-wrapper {
+      background-color: var(--bg-dark);
+      padding: 60px 50px 75px 50px; 
+      border-radius: 20px;
+      border: 2.5px solid var(--text-light); /* Viền trắng mảnh line art dày dặn hơn */
+      width: 1020px;
+      height: 1020px; 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Cân đối khoảng cách giữa Header và Visual */
+      align-items: center;
+      position: relative;
+    }
+
+    /* Logo Brand Watermark (Góc trên bên trái) */
+    .logo-container {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      display: flex;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .logo-img {
+      height: 80px;
+      width: auto;
+      opacity: 0.95;
+    }
+
+    /* Board Header - Tiêu đề lớn chứa câu hỏi của người dùng */
+    .board-header {
+      width: 100%;
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      z-index: 10;
+    }
+
+    .main-title {
+      font-size: 33px; /* Đủ lớn để tạo điểm nhấn mạnh mẽ */
+      font-weight: 850;
+      line-height: 1.45;
+      color: var(--text-light);
+      max-width: 760px; /* Tránh đè lên logo ở góc trái */
+      margin: 0 auto;
+      letter-spacing: -0.5px;
+    }
+
+    .main-title .highlight {
+      color: var(--accent-yellow);
+    }
+
+    /* Concept Visualization Area */
+    .visual-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 0 10px;
+      position: relative;
+      margin-bottom: 30px; /* Đẩy cụm visual lên trên một chút */
+    }
+
+    /* Cột biểu thị từng trạng thái */
+    .visual-column {
+      width: 43%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Tăng size chữ vượt bậc của State Tag - Font Inter Bold siêu nét */
+    .visual-column span.state-tag {
+      font-size: 26px; 
+      font-weight: 900; 
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 35px;
+    }
+
+    .column-left span.state-tag {
+      color: var(--text-muted);
+    }
+
+    .column-right span.state-tag {
+      color: var(--accent-yellow);
+    }
+
+    /* SVG Canvas vẽ tay line-art tối giản trừu tượng */
+    .graphic-box {
+      width: 280px;
+      height: 280px;
+      background: #141414; /* Nền xám đen rất nhẹ tạo khối hộp */
+      border: 2px solid var(--text-light);
+      border-radius: 16px;
+      box-shadow: 4px 4px 0px rgba(252, 249, 245, 0.05);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Box bên phải phá vỡ ranh giới (mở toang góc trên và phải) */
+    .graphic-box.unlocked {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    /* Tạo các đường viền giả cho box bên phải chỉ giữ lại cạnh dưới và cạnh trái */
+    .graphic-box.unlocked::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2.5px;
+      background-color: var(--text-light);
+    }
+
+    .graphic-box.unlocked::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2.5px;
+      height: 100%;
+      background-color: var(--text-light);
+    }
+
+    /* Tăng size chữ Caption Text bên dưới để đọc siêu dễ dàng, dùng phông Inter nét căng */
+    .caption-text {
+      font-size: 23px; 
+      font-weight: 600;
+      margin-top: 35px;
+      line-height: 1.5;
+      max-width: 350px; 
+    }
+
+    .column-left .caption-text {
+      color: var(--text-muted);
+    }
+
+    .column-right .caption-text {
+      color: var(--text-light);
+    }
+
+    /* Cầu nối / Mũi tên chuyển giao ở giữa */
+    .transition-bridge {
+      width: 14%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .transition-arrow {
+      width: 80px; 
+      height: 2px;
+      background-color: var(--text-light);
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .transition-arrow::after {
+      content: '';
+      position: absolute;
+      right: -2px;
+      top: -5px;
+      width: 12px;
+      height: 12px;
+      border-top: 2px solid var(--text-light);
+      border-right: 2px solid var(--text-light);
+      transform: rotate(45deg);
+    }
+
+    /* Tăng size của Bridge Tag và dùng font Inter nét đậm */
+    .bridge-tag {
+      background-color: var(--accent-yellow);
+      color: #0a0a0a; 
+      border: 1.5px solid var(--text-light);
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 15px; 
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="board-wrapper" id="capture-area">
+
+    <!-- Logo Brand Watermark (Góc trên bên trái) -->
+    <div class="logo-container">
+      <img src="cropped-favicon.png" class="logo-img" alt="Logo">
+    </div>
+
+    <!-- Header chứa headline câu hỏi đặt ra -->
+    <div class="board-header">
+      <h1 class="main-title">
+        “Khi khách hàng hỏi <span class="highlight">AI</span> về ngành của mình, <span class="highlight">AI</span> có nhắc đến <span class="highlight">mình</span> không?”
+      </h1>
+    </div>
+    
+    <!-- Visual Container -->
+    <div class="visual-container">
+      
+      <!-- Column Left: Invisible to AI -->
+      <div class="visual-column column-left">
+        <span class="state-tag">Vô hình trước AI</span>
+        
+        <div class="graphic-box">
+          <!-- SVG: Mô phỏng AI lãng quên thương hiệu của bạn -->
+          <svg width="280" height="280" style="position: absolute; top:0; left:0;">
+            <!-- Khung hỏi AI của khách hàng -->
+            <rect x="20" y="20" width="170" height="42" rx="8" fill="#1e1e1e" stroke="var(--text-muted)" stroke-width="1.5" />
+            <text x="35" y="46" fill="var(--text-light)" font-size="14" font-weight="600">"Top chuyên gia..."</text>
+            <circle cx="15" cy="41" r="3" fill="var(--text-muted)" />
+            
+            <!-- Đường xử lý đứt quãng thể hiện dữ liệu bị ngắt kết nối -->
+            <path d="M 105 62 L 105 85 L 140 85 L 140 100" fill="none" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="3 3" />
+            
+            <!-- Hộp kết quả trả về của AI -->
+            <rect x="50" y="100" width="210" height="155" rx="12" fill="#141414" stroke="var(--text-muted)" stroke-width="1.5" />
+            <text x="65" y="125" fill="var(--text-muted)" font-size="12" font-weight="700">AI ANSWER:</text>
+            
+            <!-- Đối thủ 1 -->
+            <rect x="65" y="140" width="180" height="25" rx="4" fill="#1e1e1e" stroke="#333" stroke-width="1" />
+            <text x="75" y="157" fill="var(--text-muted)" font-size="12">1. Đối thủ A</text>
+            
+            <!-- Đối thủ 2 -->
+            <rect x="65" y="172" width="180" height="25" rx="4" fill="#1e1e1e" stroke="#333" stroke-width="1" />
+            <text x="75" y="189" fill="var(--text-muted)" font-size="12">2. Đối thủ B</text>
+            
+            <!-- Vị trí của bạn (Trống rỗng, vô hình) -->
+            <rect x="65" y="204" width="180" height="35" rx="4" fill="none" stroke="#444" stroke-width="1.5" stroke-dasharray="4 4" />
+            <text x="75" y="226" fill="#666" font-size="12" font-weight="700">Bạn ở đâu? (?)</text>
+          </svg>
+        </div>
+        
+        <div class="caption-text">
+          Khách hàng tìm kiếm giải pháp qua AI, nhưng bạn hoàn toàn không có tên trong danh sách đề xuất.
+        </div>
+      </div>
+
+      <!-- Transition Bridge -->
+      <div class="transition-bridge">
+        <div class="transition-arrow"></div>
+        <div class="bridge-tag">AI Visibility</div>
+      </div>
+
+      <!-- Column Right: Recommended by AI -->
+      <div class="visual-column column-right">
+        <span class="state-tag">Được AI nhắc tên</span>
+        
+        <div class="graphic-box unlocked">
+          <!-- SVG: Mô phỏng AI tự tin đề cử thương hiệu của bạn hàng đầu -->
+          <svg width="280" height="280" style="position: absolute; top:0; left:0;">
+            <!-- Khung hỏi AI của khách hàng (Màu vàng sáng) -->
+            <rect x="20" y="20" width="170" height="42" rx="8" fill="#1e1e1e" stroke="var(--accent-yellow)" stroke-width="2" />
+            <text x="35" y="46" fill="var(--text-light)" font-size="14" font-weight="600">"Top chuyên gia..."</text>
+            <circle cx="15" cy="41" r="3" fill="var(--accent-yellow)" />
+
+            <!-- Đường xử lý liền mạch, thông suốt kết nối thẳng tới bạn -->
+            <path d="M 105 62 L 105 85 L 140 85 L 140 100" fill="none" stroke="var(--accent-yellow)" stroke-width="2.5" />
+
+            <!-- Hộp kết quả trả về của AI (Nổi bật, viền trắng) -->
+            <rect x="50" y="100" width="210" height="155" rx="12" fill="#141414" stroke="var(--text-light)" stroke-width="2" />
+            <text x="65" y="125" fill="var(--accent-yellow)" font-size="12" font-weight="800">AI RECOMMENDATION:</text>
+
+            <!-- Thương hiệu của bạn đứng đầu, nổi bật rực rỡ màu vàng -->
+            <rect x="65" y="137" width="180" height="35" rx="6" fill="rgba(255, 222, 47, 0.08)" stroke="var(--accent-yellow)" stroke-width="2" />
+            <path d="M 76 154 L 79 151 L 82 154 L 79 157 Z" fill="var(--accent-yellow)" />
+            <text x="88" y="159" fill="var(--accent-yellow)" font-size="13" font-weight="900">1. THƯƠNG HIỆU BẠN</text>
+            
+            <!-- Citation Badge nhỏ (Màu vàng) -->
+            <rect x="202" y="145" width="35" height="18" rx="3" fill="var(--accent-yellow)" />
+            <text x="207" y="157" fill="#0a0a0a" font-size="9" font-weight="800">98%</text>
+
+            <!-- Đối thủ 1 (Đứng thứ 2) -->
+            <rect x="65" y="179" width="180" height="25" rx="4" fill="#1e1e1e" stroke="#333" stroke-width="1" />
+            <text x="75" y="196" fill="var(--text-muted)" font-size="12">2. Đối thủ A</text>
+
+            <!-- Đối thủ 2 (Đứng thứ 3) -->
+            <rect x="65" y="210" width="180" height="25" rx="4" fill="#1e1e1e" stroke="#333" stroke-width="1" />
+            <text x="75" y="227" fill="var(--text-muted)" font-size="12">3. Đối thủ B</text>
+
+            <!-- Hiệu ứng sóng lan tỏa thương hiệu ra ngoài -->
+            <path d="M 235 90 A 25 25 0 0 1 255 110" fill="none" stroke="var(--accent-yellow)" stroke-width="2" stroke-linecap="round" />
+            <path d="M 245 80 A 40 40 0 0 1 270 105" fill="none" stroke="var(--accent-yellow)" stroke-width="1.5" stroke-dasharray="3 3" stroke-linecap="round" />
+          </svg>
+        </div>
+        
+        <div class="caption-text">
+          Thương hiệu phủ sóng trong cơ sở tri thức của AI, được xếp hạng số #1 làm gợi ý khuyên dùng.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
