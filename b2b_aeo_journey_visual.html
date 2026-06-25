@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hành trình mua hàng B2B trong kỷ nguyên AI Search (AEO & GEO)</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Warm Dark Mode & Line Art Palette */
+      --bg-dark: #0a0a0a;       /* Nền đen sâu thẳm sang trọng */
+      --text-light: #fcf9f5;     /* Nét chữ trắng ngà sạch sẽ */
+      --text-muted: #a3a3a3;     /* Chữ phụ màu xám sáng */
+      --accent-yellow: #ffde2f;  /* Màu vàng thương hiệu lấy từ logo */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-dark); 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 1080px;
+      height: 1080px; /* Hình vuông tuyệt đối 1:1 */
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      color: var(--text-light);
+    }
+
+    /* Container holding the visual board (Clean Minimalism Square in Dark Mode) */
+    .board-wrapper {
+      background-color: var(--bg-dark);
+      padding: 60px 45px 65px 45px; 
+      border-radius: 20px;
+      border: 2.5px solid var(--text-light); /* Viền trắng mảnh line art dày dặn hơn */
+      width: 1020px;
+      height: 1020px; 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; 
+      align-items: center;
+      position: relative;
+    }
+
+    /* Logo Brand Watermark (Góc trên bên trái) */
+    .logo-container {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      display: flex;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .logo-img {
+      height: 80px;
+      width: auto;
+      opacity: 0.95;
+    }
+
+    /* Board Header */
+    .board-header {
+      width: 100%;
+      text-align: center;
+      margin-top: 35px;
+      margin-bottom: 20px;
+      z-index: 10;
+    }
+
+    .main-title {
+      font-size: 32px; 
+      font-weight: 850;
+      line-height: 1.35;
+      color: var(--text-light);
+      max-width: 740px; /* Tránh đè lên logo ở góc trái */
+      margin: 0 auto;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+    }
+
+    .main-title .highlight {
+      color: var(--accent-yellow);
+    }
+
+    .sub-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-top: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Grid Area holding the 4 Journey Cards */
+    .journey-container {
+      width: 100%;
+      height: 700px;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    /* Connection Path SVG running in the background */
+    .connection-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* B2B Journey Cards */
+    .journey-card {
+      position: absolute;
+      width: 420px;
+      height: 310px;
+      background: #141414;
+      border: 1.5px solid var(--text-light);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 4px 4px 0px rgba(252, 249, 245, 0.05);
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    /* Specific Card Positions in the 2x2 layout */
+    .card-step-1 { left: 20px; top: 20px; }
+    .card-step-2 { right: 20px; top: 20px; }
+    .card-step-3 { right: 20px; bottom: 20px; }
+    .card-step-4 { left: 20px; bottom: 20px; }
+
+    /* Card Elements styling */
+    .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .step-badge {
+      color: var(--accent-yellow);
+      border: 1.5px solid var(--accent-yellow);
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: rgba(255, 222, 47, 0.05);
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-light);
+      margin-top: 12px;
+      line-height: 1.3;
+    }
+
+    .card-illustration {
+      height: 90px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 12px 0;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="board-wrapper" id="capture-area">
+
+    <!-- Logo Brand Watermark (Góc trên bên trái) -->
+    <div class="logo-container">
+      <img src="cropped-favicon.png" class="logo-img" alt="Logo">
+    </div>
+
+    <!-- Header chứa headline câu hỏi đặt ra -->
+    <div class="board-header">
+      <h1 class="main-title">
+        Hành trình mua hàng B2B trong kỷ nguyên <span class="highlight">AI Search</span>
+      </h1>
+      <p class="sub-title">Quy trình tìm kiếm, đánh giá và ra quyết định mới với sự xuất hiện của AEO & GEO</p>
+    </div>
+    
+    <!-- Journey Container holding cards and flow line -->
+    <div class="journey-container">
+      
+      <!-- Background SVG drawing the U-shaped flow path with direction arrows -->
+      <svg class="connection-svg">
+        <!-- Connecting path linking the centers of cards 1 -> 2 -> 3 -> 4 -->
+        <path d="M 230 175 L 700 175 L 700 525 L 230 525" 
+              fill="none" stroke="var(--accent-yellow)" stroke-width="3" stroke-dasharray="10 8" />
+        
+        <!-- Directional Arrow 1 (Right) -->
+        <path d="M 465 170 L 475 175 L 465 180" fill="none" stroke="var(--accent-yellow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        
+        <!-- Directional Arrow 2 (Down) -->
+        <path d="M 695 345 L 700 355 L 705 345" fill="none" stroke="var(--accent-yellow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        
+        <!-- Directional Arrow 3 (Left) -->
+        <path d="M 465 520 L 455 525 L 465 530" fill="none" stroke="var(--accent-yellow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+
+      <!-- Card 1: Ask AI -->
+      <div class="journey-card card-step-1">
+        <div class="card-header-row">
+          <span class="step-badge">Bước 01</span>
+        </div>
+        <h2 class="card-title">Hỏi AI Để Tìm Giải Pháp Chi Tiết</h2>
+        <div class="card-illustration">
+          <svg width="220" height="80">
+            <!-- Chat bubble from B2B Buyer -->
+            <rect x="15" y="10" width="190" height="42" rx="8" fill="#1e1e1e" stroke="var(--text-light)" stroke-width="1.5" />
+            <text x="30" y="35" fill="var(--text-light)" font-size="11" font-weight="600">"Top giải pháp tối ưu CIP ngành thủy sản?"</text>
+            <!-- Cursor pointer click -->
+            <path d="M 180 34 L 190 48 L 186 50 L 177 43 Z" fill="var(--accent-yellow)" />
+          </svg>
+        </div>
+        <p class="card-desc">Khách hàng B2B không còn gõ từ khóa ngắn trên Google. Họ mô tả cụ thể bài toán doanh nghiệp gặp phải và nhờ các AI Engine trả lời trực tiếp.</p>
+      </div>
+
+      <!-- Card 2: AI Recommends -->
+      <div class="journey-card card-step-2">
+        <div class="card-header-row">
+          <span class="step-badge">Bước 02</span>
+        </div>
+        <h2 class="card-title">AI Quét Cơ Sở Dữ Liệu & Đề Xuất</h2>
+        <div class="card-illustration">
+          <svg width="220" height="80">
+            <!-- Center brand recommended -->
+            <circle cx="110" cy="40" r="22" fill="rgba(255, 222, 47, 0.08)" stroke="var(--accent-yellow)" stroke-width="2" />
+            <text x="110" y="44" text-anchor="middle" fill="var(--accent-yellow)" font-size="10" font-weight="900">BẠN (#1)</text>
+            <!-- Outward dots representing competitors -->
+            <circle cx="50" cy="20" r="5" fill="#444" />
+            <circle cx="170" cy="20" r="5" fill="#444" />
+            <circle cx="60" cy="60" r="5" fill="#444" />
+            <circle cx="160" cy="60" r="5" fill="#444" />
+            <!-- Connection lines -->
+            <line x1="110" y1="40" x2="50" y2="20" stroke="#333" stroke-width="1" />
+            <line x1="110" y1="40" x2="170" y2="20" stroke="#333" stroke-width="1" />
+            <line x1="110" y1="40" x2="60" y2="60" stroke="#333" stroke-width="1" />
+            <line x1="110" y1="40" x2="160" y2="60" stroke="#333" stroke-width="1" />
+          </svg>
+        </div>
+        <p class="card-desc">AI quét dữ liệu toàn ngành (case studies, review, tài liệu kỹ thuật) để tổng hợp câu trả lời. Nhờ AEO & GEO tốt, thương hiệu của bạn được xếp số #1.</p>
+      </div>
+
+      <!-- Card 3: Verify via Citation Links -->
+      <div class="journey-card card-step-3">
+        <div class="card-header-row">
+          <span class="step-badge">Bước 03</span>
+        </div>
+        <h2 class="card-title">Xác Minh Qua Link Nguồn Trích Dẫn</h2>
+        <div class="card-illustration">
+          <svg width="220" height="80">
+            <!-- Web document layout -->
+            <rect x="40" y="5" width="140" height="70" rx="4" fill="#18181b" stroke="var(--text-light)" stroke-width="1" />
+            <!-- Text lines -->
+            <line x1="55" y1="20" x2="165" y2="20" stroke="#444" stroke-width="2" />
+            <line x1="55" y1="35" x2="135" y2="35" stroke="#444" stroke-width="2" />
+            <line x1="55" y1="50" x2="165" y2="50" stroke="#444" stroke-width="2" />
+            <!-- Citation links in yellow -->
+            <rect x="140" y="30" width="30" height="12" rx="2" fill="var(--accent-yellow)" />
+            <text x="155" y="39" text-anchor="middle" fill="#0a0a0a" font-size="8" font-weight="900">[1]</text>
+          </svg>
+        </div>
+        <p class="card-desc">Khách hàng B2B cực kỳ kỹ tính. Họ sẽ click trực tiếp vào các đường link nguồn trích dẫn (Citations) mà AI hiển thị để kiểm chứng hồ sơ năng lực thực tế.</p>
+      </div>
+
+      <!-- Card 4: Contact & Convert -->
+      <div class="journey-card card-step-4">
+        <div class="card-header-row">
+          <span class="step-badge">Bước 04</span>
+        </div>
+        <h2 class="card-title">Truy Cập Trang Đích & Yêu Cầu Demo</h2>
+        <div class="card-illustration">
+          <svg width="220" height="80">
+            <!-- Calendar target with glow -->
+            <circle cx="110" cy="40" r="28" fill="rgba(255, 222, 47, 0.05)" stroke="var(--accent-yellow)" stroke-width="1.5" stroke-dasharray="3 3" />
+            <!-- Calendar box -->
+            <rect x="95" y="25" width="30" height="30" rx="4" fill="#1e1e1e" stroke="var(--text-light)" stroke-width="1.5" />
+            <line x1="95" y1="35" x2="125" y2="35" stroke="var(--text-light)" stroke-width="1.5" />
+            <!-- Checkmark -->
+            <path d="M 103 43 L 108 48 L 117 38" fill="none" stroke="var(--accent-yellow)" stroke-width="2.5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <p class="card-desc">Khách hàng truy cập thẳng vào case study/bài viết chi tiết của bạn qua link trích dẫn của AI. Họ chủ động đặt hẹn lịch tư vấn vì độ tin cậy đã được xây dựng từ trước.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
