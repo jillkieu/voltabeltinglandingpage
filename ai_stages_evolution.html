@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Các Giai Đoạn Ứng Dụng AI (Dark Mode)</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Warm Dark Mode & Line Art Palette */
+      --bg-dark: #0a0a0a;       /* Nền đen sâu thẳm sang trọng */
+      --text-light: #fcf9f5;     /* Nét chữ trắng ngà sạch sẽ */
+      --text-muted: #a3a3a3;     /* Chữ phụ màu xám sáng */
+      --accent-yellow: #ffde2f;  /* Màu vàng thương hiệu lấy từ logo */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-dark); 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 1080px;
+      height: 1080px; /* Hình vuông tuyệt đối 1:1 */
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      color: var(--text-light);
+    }
+
+    /* Container holding the visual board */
+    .board-wrapper {
+      background-color: var(--bg-dark);
+      padding: 60px 45px 65px 45px; 
+      border-radius: 20px;
+      border: 2.5px solid var(--text-light); /* Viền trắng mảnh line art */
+      width: 1020px;
+      height: 1020px; 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; 
+      align-items: center;
+      position: relative;
+    }
+
+    /* Logo Brand Watermark (Góc trên bên trái) */
+    .logo-container {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      display: flex;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .logo-img {
+      height: 80px;
+      width: auto;
+      opacity: 0.95;
+    }
+
+    /* Board Header */
+    .board-header {
+      width: 100%;
+      text-align: center;
+      margin-top: 35px;
+      margin-bottom: 20px;
+      z-index: 10;
+    }
+
+    .main-title {
+      font-size: 32px; 
+      font-weight: 850;
+      line-height: 1.4;
+      color: var(--text-light);
+      max-width: 740px; /* Tránh đè lên logo ở góc trái */
+      margin: 0 auto;
+      letter-spacing: -0.5px;
+    }
+
+    .main-title .highlight {
+      color: var(--accent-yellow);
+    }
+
+    .sub-title {
+      font-size: 15.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-top: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Flow Container holding cards and arrows */
+    .flow-container {
+      width: 100%;
+      height: 680px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      padding: 0 10px;
+    }
+
+    /* Stage Card */
+    .stage-card {
+      width: 210px;
+      height: 480px;
+      background: rgba(20, 20, 20, 0.4);
+      border: 1.5px solid rgba(252, 249, 245, 0.15);
+      border-radius: 16px;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      box-shadow: 4px 4px 0px rgba(252, 249, 245, 0.02);
+      transition: all 0.3s ease;
+    }
+
+    /* AI Agent Card Highlighted */
+    .stage-card.highlighted {
+      border: 2px solid var(--accent-yellow);
+      background: rgba(255, 222, 47, 0.04);
+      box-shadow: 0 0 25px rgba(255, 222, 47, 0.08), 4px 4px 0px rgba(255, 222, 47, 0.1);
+    }
+
+    .stage-card.highlighted::before {
+      content: "MỤC TIÊU CUỐI";
+      position: absolute;
+      top: -12px;
+      background: var(--accent-yellow);
+      color: var(--bg-dark);
+      font-size: 10px;
+      font-weight: 900;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+    }
+
+    /* Icon Area */
+    .icon-wrapper {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(252, 249, 245, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 25px;
+      color: var(--text-light);
+      background: rgba(10, 10, 10, 0.5);
+    }
+
+    .stage-card.highlighted .icon-wrapper {
+      border-color: var(--accent-yellow);
+      color: var(--accent-yellow);
+    }
+
+    /* Stage Number */
+    .stage-number {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--accent-yellow);
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    /* Title */
+    .stage-title {
+      font-size: 20px;
+      font-weight: 850;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    /* Divider Line */
+    .card-divider {
+      width: 40px;
+      height: 2px;
+      background: rgba(252, 249, 245, 0.15);
+      margin-bottom: 20px;
+    }
+
+    .stage-card.highlighted .card-divider {
+      background: var(--accent-yellow);
+    }
+
+    /* Description */
+    .stage-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .stage-card.highlighted .stage-desc {
+      color: var(--text-light);
+    }
+
+    /* Connection Line/Arrows SVG */
+    .connection-arrows {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Background glow effect behind the Agent card */
+    .radial-glow {
+      position: absolute;
+      right: -100px;
+      bottom: 50px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 222, 47, 0.05) 0%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="board-wrapper" id="capture-area">
+
+    <!-- Logo Brand Watermark (Góc trên bên trái) -->
+    <div class="logo-container">
+      <img src="cropped-favicon.png" class="logo-img" alt="Logo">
+    </div>
+
+    <!-- Header chứa headline câu quote -->
+    <div class="board-header">
+      <h1 class="main-title">
+        4 Cấp Độ Ứng Dụng <span class="highlight">Trí Tuệ Nhân Tạo (AI)</span> Trong Doanh Nghiệp
+      </h1>
+      <p class="sub-title">Lộ trình tiến hóa từ truy vấn thông tin thủ công đến hệ thống tự hành hoàn toàn</p>
+    </div>
+    
+    <!-- Flow Container holding Cards and Arrows -->
+    <div class="flow-container">
+      
+      <!-- Svg Connection Arrows -->
+      <svg class="connection-arrows">
+        <defs>
+          <marker id="flow-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 2 2 L 8 5 L 2 8 Z" fill="var(--text-muted)" opacity="0.5" />
+          </marker>
+          <marker id="flow-arrow-highlight" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 2 2 L 8 5 L 2 8 Z" fill="var(--accent-yellow)" />
+          </marker>
+        </defs>
+
+        <!-- Arrow 1 -> 2 -->
+        <path d="M 225 340 L 245 340" stroke="rgba(252, 249, 245, 0.25)" stroke-width="2.5" stroke-dasharray="5 3" marker-end="url(#flow-arrow)" />
+        
+        <!-- Arrow 2 -> 3 -->
+        <path d="M 465 340 L 485 340" stroke="rgba(252, 249, 245, 0.25)" stroke-width="2.5" stroke-dasharray="5 3" marker-end="url(#flow-arrow)" />
+        
+        <!-- Arrow 3 -> 4 -->
+        <path d="M 705 340 L 725 340" stroke="var(--accent-yellow)" stroke-width="2.5" stroke-dasharray="5 3" marker-end="url(#flow-arrow-highlight)" />
+      </svg>
+
+      <!-- Radial Glow behind AI Agent -->
+      <div class="radial-glow"></div>
+
+      <!-- Stage 1: Hỏi đáp -->
+      <div class="stage-card">
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            <path d="M12 7v4" stroke="var(--accent-yellow)" stroke-width="2.5"/>
+            <circle cx="12" cy="14" r="1" fill="var(--accent-yellow)" stroke="none"/>
+          </svg>
+        </div>
+        <div class="stage-number">CẤP ĐỘ 01</div>
+        <h2 class="stage-title">Hỏi Đáp<br>(Q&A)</h2>
+        <div class="card-divider"></div>
+        <p class="stage-desc">
+          Tương tác thủ công, hỏi gì đáp nấy. AI hoạt động như một công cụ tra cứu thông tin tức thời ở mức cơ bản.
+        </p>
+      </div>
+
+      <!-- Stage 2: Prompt -->
+      <div class="stage-card">
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M7 8l3 3-3 3" stroke="var(--accent-yellow)" stroke-width="2.5"/>
+            <line x1="12" y1="14" x2="16" y2="14" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div class="stage-number">CẤP ĐỘ 02</div>
+        <h2 class="stage-title">Kỹ Nghệ<br>Prompt</h2>
+        <div class="card-divider"></div>
+        <p class="stage-desc">
+          Thiết lập vai trò, bối cảnh và định dạng đầu ra có cấu trúc để hướng dẫn AI trả về câu trả lời chất lượng cao hơn.
+        </p>
+      </div>
+
+      <!-- Stage 3: Skill -->
+      <div class="stage-card">
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3" stroke="var(--accent-yellow)" stroke-width="2" />
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+        </div>
+        <div class="stage-number">CẤP ĐỘ 03</div>
+        <h2 class="stage-title">Kỹ Năng<br>(Skill)</h2>
+        <div class="card-divider"></div>
+        <p class="stage-desc">
+          Trang bị API, cơ sở tri thức và các công cụ bổ trợ chuyên biệt để AI có khả năng kết nối dữ liệu và giải quyết nghiệp vụ cụ thể.
+        </p>
+      </div>
+
+      <!-- Stage 4: AI Agent -->
+      <div class="stage-card highlighted">
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2" />
+            <circle cx="12" cy="12" r="4" fill="none" stroke="var(--accent-yellow)" stroke-width="2.5" />
+            <circle cx="12" cy="3" r="2" fill="currentColor"/>
+            <circle cx="21" cy="12" r="2" fill="currentColor"/>
+            <circle cx="12" cy="21" r="2" fill="currentColor"/>
+            <circle cx="3" cy="12" r="2" fill="currentColor"/>
+            <line x1="12" y1="5" x2="12" y2="8" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="19" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="12" y1="19" x2="12" y2="16" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="5" y1="12" x2="8" y2="12" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="stage-number">CẤP ĐỘ 04</div>
+        <h2 class="stage-title">Tác Nhân<br>(AI Agent)</h2>
+        <div class="card-divider"></div>
+        <p class="stage-desc">
+          Tự lập kế hoạch, tự chọn công cụ, tự sửa sai và chạy vòng lặp để tự động hoàn thành các chuỗi tác vụ phức tạp một cách độc lập.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
