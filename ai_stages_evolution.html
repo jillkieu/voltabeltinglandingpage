@@ -130,24 +130,11 @@
       transition: all 0.3s ease;
     }
 
-    /* AI Agent Card Highlighted */
+     /* AI Agent Card Highlighted */
     .stage-card.highlighted {
       border: 2px solid var(--accent-yellow);
       background: rgba(255, 222, 47, 0.04);
       box-shadow: 0 0 25px rgba(255, 222, 47, 0.08), 4px 4px 0px rgba(255, 222, 47, 0.1);
-    }
-
-    .stage-card.highlighted::before {
-      content: "MỤC TIÊU CUỐI";
-      position: absolute;
-      top: -12px;
-      background: var(--accent-yellow);
-      color: var(--bg-dark);
-      font-size: 10px;
-      font-weight: 900;
-      padding: 3px 10px;
-      border-radius: 20px;
-      letter-spacing: 1px;
     }
 
     /* Icon Area */
@@ -171,20 +158,20 @@
 
     /* Stage Number */
     .stage-number {
-      font-size: 14px;
-      font-weight: 800;
+      font-size: 32px;
+      font-weight: 900;
       color: var(--accent-yellow);
-      letter-spacing: 2px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     /* Title */
     .stage-title {
-      font-size: 20px;
-      font-weight: 850;
+      font-size: 22px;
+      font-weight: 900;
       color: var(--text-light);
       margin-bottom: 20px;
       line-height: 1.2;
+      letter-spacing: 0.5px;
     }
 
     /* Divider Line */
@@ -247,9 +234,9 @@
     <!-- Header chứa headline câu quote -->
     <div class="board-header">
       <h1 class="main-title">
-        4 Cấp Độ Ứng Dụng <span class="highlight">Trí Tuệ Nhân Tạo (AI)</span> Trong Doanh Nghiệp
+        Các Giai Đoạn Ứng Dụng <span class="highlight">AI</span> Trong Doanh Nghiệp
       </h1>
-      <p class="sub-title">Lộ trình tiến hóa từ truy vấn thông tin thủ công đến hệ thống tự hành hoàn toàn</p>
+      <p class="sub-title">Lộ trình phát triển từ tra cứu cơ bản đến hệ thống tự hành toàn diện</p>
     </div>
     
     <!-- Flow Container holding Cards and Arrows -->
@@ -288,11 +275,11 @@
             <circle cx="12" cy="14" r="1" fill="var(--accent-yellow)" stroke="none"/>
           </svg>
         </div>
-        <div class="stage-number">CẤP ĐỘ 01</div>
-        <h2 class="stage-title">Hỏi Đáp<br>(Q&A)</h2>
+        <div class="stage-number">01</div>
+        <h2 class="stage-title">Q&A</h2>
         <div class="card-divider"></div>
         <p class="stage-desc">
-          Tương tác thủ công, hỏi gì đáp nấy. AI hoạt động như một công cụ tra cứu thông tin tức thời ở mức cơ bản.
+          Hỏi gì đáp nấy, tra cứu thông tin cơ bản. Tương tác hoàn toàn thủ công.
         </p>
       </div>
 
@@ -305,11 +292,11 @@
             <line x1="12" y1="14" x2="16" y2="14" stroke="currentColor" stroke-width="2.5"/>
           </svg>
         </div>
-        <div class="stage-number">CẤP ĐỘ 02</div>
-        <h2 class="stage-title">Kỹ Nghệ<br>Prompt</h2>
+        <div class="stage-number">02</div>
+        <h2 class="stage-title">PROMPT</h2>
         <div class="card-divider"></div>
         <p class="stage-desc">
-          Thiết lập vai trò, bối cảnh và định dạng đầu ra có cấu trúc để hướng dẫn AI trả về câu trả lời chất lượng cao hơn.
+          Thiết lập vai trò, ngữ cảnh để kiểm soát và định hình câu trả lời chất lượng hơn.
         </p>
       </div>
 
@@ -321,11 +308,11 @@
             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
           </svg>
         </div>
-        <div class="stage-number">CẤP ĐỘ 03</div>
-        <h2 class="stage-title">Kỹ Năng<br>(Skill)</h2>
+        <div class="stage-number">03</div>
+        <h2 class="stage-title">SKILL</h2>
         <div class="card-divider"></div>
         <p class="stage-desc">
-          Trang bị API, cơ sở tri thức và các công cụ bổ trợ chuyên biệt để AI có khả năng kết nối dữ liệu và giải quyết nghiệp vụ cụ thể.
+          Kết nối API, công cụ và tri thức chuyên biệt để giải quyết các nghiệp vụ cụ thể.
         </p>
       </div>
 
@@ -345,11 +332,11 @@
             <line x1="5" y1="12" x2="8" y2="12" stroke="currentColor" stroke-width="1.5"/>
           </svg>
         </div>
-        <div class="stage-number">CẤP ĐỘ 04</div>
-        <h2 class="stage-title">Tác Nhân<br>(AI Agent)</h2>
+        <div class="stage-number">04</div>
+        <h2 class="stage-title">AI AGENT</h2>
         <div class="card-divider"></div>
         <p class="stage-desc">
-          Tự lập kế hoạch, tự chọn công cụ, tự sửa sai và chạy vòng lặp để tự động hoàn thành các chuỗi tác vụ phức tạp một cách độc lập.
+          Tự lên kế hoạch, chọn công cụ, chạy vòng lặp và tự động sửa sai để hoàn thành tác vụ.
         </p>
       </div>
 
